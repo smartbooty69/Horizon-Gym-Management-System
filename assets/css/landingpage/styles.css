@@ -925,12 +925,12 @@ row-gap: 2rem;
   }
 
   .footer__container {
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(3, max-content);
     justify-content: space-between;
   }
 
   .footer__content {
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(1, max-content);
   }
 }
 
@@ -1032,7 +1032,7 @@ row-gap: 2rem;
   }
 
   .footer__content {
-    column-gap: 5rem;
+    column-gap: 1rem;
   }
 
   .footer__group {
