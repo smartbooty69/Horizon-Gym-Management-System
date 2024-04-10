@@ -43,5 +43,7 @@ if (isset($_POST['submit'])) {
 }
 
 $con->close();
+header("location:../components/dashboard.php");
+exit; 
 ?>
 
