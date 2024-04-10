@@ -174,8 +174,7 @@
                                     </div>
                                     <div class="box-header-filter">
                                         <!-- Add member button -->
-                                        <button class="btn btn-outline">All</button>
-                                        <button class="btn btn-outline">Expired</button>
+                                        <button class="btn btn-outline">Expiring</button>
                                     </div>
                                 <!-- Add member button -->
                                     <div class="box-header-button">
@@ -382,7 +381,7 @@
                                 </table>
                             </div>                            
                         </div>
-                        <!-- END ORDERS TABLE -->
+                        <!-- END OF MEMBERS TABLE -->
                     </div>
                 </div>
             </div>
@@ -395,10 +394,10 @@
         <Section id="analytic" class="hidden">
             <div class="analytics-container">
                 <div class="box box-hover">
-                    <canvas id="genderChart"></canvas>
+                    <iframe src="./piechart.php" width="100%" height="600px"></iframe>
                 </div>
                 <div class="box box-hover">
-                    <canvas id="ageChart"></canvas>
+                    <iframe src="./piechart1.php" width="100%" height="600px"></iframe>
                 </div>
             </div>
         </Section>
@@ -409,13 +408,98 @@
     <!--======= PACKAGE SECTION =======-->
     <Section id="package" class="hidden">
         <div class="card-box">
-            <div class="card" id="plus-card">
+            <div class="card package-card">
                 <div class="card-body">
-                    <i class='bx bx-plus-circle'></i>
+                    <form>
+                        <input type="text" placeholder="Package Name">
+                        <select>
+                            <option value="1 Month">1 Month</option>
+                            <option value="3 Months">3 Months</option>
+                            <option value="6 Months">6 Months</option>
+                            <option value="12 Months">12 Months</option>
+                        </select>
+                        <input type="text" placeholder="Package Price">
+                        <textarea placeholder="Package Description"></textarea>
+                    </form>
+                    <div class="card-btn-container">
+                        <button class="btn btn-outline" id="card-add-btn">Edit</button>
+                    </div>
                 </div>
+            </div>
+            <div class="card package-card">
+                <div class="card-body">
+                    <form>
+                        <input type="text" placeholder="Package Name">
+                        <select>
+                            <option value="1 Month">1 Month</option>
+                            <option value="3 Months">3 Months</option>
+                            <option value="6 Months">6 Months</option>
+                            <option value="12 Months">12 Months</option>
+                        </select>
+                        <input type="text" placeholder="Package Price">
+                        <textarea placeholder="Package Description"></textarea>
+                    </form>
+                    <div class="card-btn-container">
+                        <button class="btn btn-outline" id="card-add-btn">Edit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card package-card">
+                <div class="card-body">
+                    <form>
+                        <input type="text" placeholder="Package Name">
+                        <select>
+                            <option value="1 Month">1 Month</option>
+                            <option value="3 Months">3 Months</option>
+                            <option value="6 Months">6 Months</option>
+                            <option value="12 Months">12 Months</option>
+                        </select>
+                        <input type="text" placeholder="Package Price">
+                        <textarea placeholder="Package Description"></textarea>
+                    </form>
+                    <div class="card-btn-container">
+                        <button class="btn btn-outline" id="card-add-btn">Edit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card package-card">
+                <div class="card-body">
+                    <form>
+                        <input type="text" placeholder="Package Name">
+                        <select>
+                            <option value="1 Month">1 Month</option>
+                            <option value="3 Months">3 Months</option>
+                            <option value="6 Months">6 Months</option>
+                            <option value="12 Months">12 Months</option>
+                        </select>
+                        <input type="text" placeholder="Package Price">
+                        <textarea placeholder="Package Description"></textarea>
+                    </form>
+                    <div class="card-btn-container">
+                        <button class="btn btn-outline" id="card-add-btn">Edit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card package-card">
+                <div class="card-body">
+                    <form>
+                        <input type="text" placeholder="Package Name">
+                        <select>
+                            <option value="1 Month">1 Month</option>
+                            <option value="3 Months">3 Months</option>
+                            <option value="6 Months">6 Months</option>
+                            <option value="12 Months">12 Months</option>
+                        </select>
+                        <input type="text" placeholder="Package Price">
+                        <textarea placeholder="Package Description"></textarea>
+                    </form>
+                    <div class="card-btn-container">
+                        <button class="btn btn-outline" id="card-edit-btn">Edit</button>
+                    </div>
+                </div>
+            </div>
           </div>
         </div>
-        
     </Section>
 
 
@@ -513,12 +597,13 @@
             </div>
             <div id="text-input" contenteditable="true"></div>
             <div class="send-container">
-            <button class="send">
-                <div class="wrapper">
+                <button class="send">
+                    <div class="wrapper">
                     <i class="fa-regular fa-paper-plane"></i>
-                </div>
+                    </div>
                 <span>Send</span>
-            </button></div>
+                </button>
+            </div>
         </div>
     </Section>
     </div>
