@@ -314,7 +314,7 @@ function handleSubmit(event) {
 // });
 
 
-document.querySelector('.btn.btn-outline').addEventListener('click', function() {
+document.getElementById('exp-btn').addEventListener('click', function() {
   var sendButton = document.createElement('div');
   sendButton.innerHTML = `
       <div class="send-container">
@@ -329,4 +329,37 @@ document.querySelector('.btn.btn-outline').addEventListener('click', function() 
 
   var displayTable = document.getElementById('display-table');
   displayTable.parentNode.insertBefore(sendButton, displayTable.nextSibling);
+
+  // Remove the "Add Member" button
+  var addMemberButton = document.getElementById('myBtn');
+  addMemberButton.parentNode.removeChild(addMemberButton);
+
+  // Disable the "Expiring" button
+  this.disabled = true;
+  document.getElementById('all-btn').disabled = false;
+});
+
+document.getElementById('all-btn').addEventListener('click', function() {
+  var sendButton = document.querySelector('.send-container');
+  var addMemberButton = document.getElementById('myBtn');
+
+  // If the "Send" button exists, remove it
+  if (sendButton) {
+      sendButton.parentNode.removeChild(sendButton);
+  }
+
+  // If the "Add Member" button doesn't exist, create it
+  if (!addMemberButton) {
+      addMemberButton = document.createElement('button');
+      addMemberButton.setAttribute('class', 'btn btn-outline');
+      addMemberButton.setAttribute('id', 'myBtn');
+      addMemberButton.textContent = 'Add Member';
+
+      var boxHeaderButtonDiv = document.querySelector('.box-header-button');
+      boxHeaderButtonDiv.appendChild(addMemberButton);
+  }
+
+  // Enable the "Expiring" button
+  document.getElementById('exp-btn').disabled = false;
+  this.disabled = true;
 });

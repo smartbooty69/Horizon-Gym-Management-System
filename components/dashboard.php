@@ -174,7 +174,11 @@
                                     </div>
                                     <div class="box-header-filter">
                                         <!-- Add member button -->
-                                        <button class="btn btn-outline">Expiring</button>
+                                        <button class="btn btn-outline" id="exp-btn">Expiring</button>
+                                    </div>
+                                    <div class="box-header-filter">
+                                        <!-- Add member button -->
+                                        <button class="btn btn-outline" id="all-btn">All</button>
                                     </div>
                                 <!-- Add member button -->
                                     <div class="box-header-button">
