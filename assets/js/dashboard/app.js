@@ -426,7 +426,7 @@ document.getElementById('all-btn').addEventListener('click', function() {
 var editPackageModal = document.getElementById("edit-package");
 
 // Get the button that opens the edit package modal
-var editPackageBtn = document.getElementById("card-edit-btn");
+var editPackageBtn = document.getElementsByClassName("all-card-edit-btn");
 
 // Get the <span> element that closes the edit package modal
 var editPackageCloseSpan = editPackageModal.getElementsByClassName("close")[0];

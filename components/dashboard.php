@@ -497,7 +497,7 @@
                         </tr>
                     </table>
                     <div class="card-btn-container">
-                        <button class="btn btn-outline" id="card-edit-btn">Edit</button>
+                        <button class="btn btn-outline all-card-edit-btn" id="card-edit-btn">Edit</button>
                     </div>
                 </div>
           </div>
