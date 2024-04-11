@@ -14,7 +14,10 @@
         }
         else{
             $row=mysqli_fetch_assoc($result);
-        
+            $query1="SELECT `package_name` FROM `package_details`";
+            $result1=mysqli_query($con,$query1);
+            if(!$result1)
+                die("query failed".mysqli_error());
     ?>
 <body>
         <form  method="POST" action="renew.php?id_new=<?php echo $row['memberId']; ?>">
@@ -32,8 +35,15 @@
                         <td>MEMBERSHIP PACKAGE:</td>
                         <td>
                             <select id="membershipPackage" name="membershipPackage">
-                                <option>demo</option>
-                                <option>demo1</option>
+                            <?php
+                                while($row1=mysqli_fetch_assoc($result1))
+                                {
+                            ?>
+                                <option><?php echo $row1['package_name']; ?></option>
+                            <?php
+                                }
+                                mysqli_close($con);
+                            ?>
                             </select>
                         </td>
                     </tr>
@@ -62,7 +72,8 @@
                             die("query failed".mysqli_error());
                         }
                         else{
-                        echo "updated";
+                            header("location:../components/dashboard.php");
+                            exit;
                     }
                     mysqli_close($con);
                 }
