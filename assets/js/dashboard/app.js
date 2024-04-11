@@ -422,62 +422,29 @@ document.getElementById('all-btn').addEventListener('click', function() {
 });
 
 
+// Get the edit package modal
+var editPackageModal = document.getElementById("add-members");
 
+// Get the button that opens the edit package modal
+var editPackageBtn = document.getElementById("card-edit-btn");
 
+// Get the <span> element that closes the edit package modal
+var editPackageCloseSpan = editPackageModal.getElementsByClassName("close")[0];
 
+// When the user clicks on the button, open the edit package modal
+editPackageBtn.onclick = function() {
+  editPackageModal.style.display = "block";
+}
 
-document.getElementById('card-edit-btn').addEventListener('click', function() {
-        editPackage();
-    });
+// When the user clicks on <span> (x) in the edit package modal, close it
+editPackageCloseSpan.onclick = function() {
+  editPackageModal.style.display = "none";
+}
 
-    function editPackage() {
-        // Get the parent container
-        var packageCard = document.querySelector('.package-card');
-        
-        // Create a new form element
-        var form = document.createElement('form');
-        
-        // Create input elements
-        var packageNameInput = document.createElement('input');
-        packageNameInput.setAttribute('type', 'text');
-        packageNameInput.setAttribute('placeholder', 'Package Name');
+// When the user clicks anywhere outside of the edit package modal, close it
+window.onclick = function(event) {
+  if (event.target == editPackageModal) {
+    editPackageModal.style.display = "none";
+  }
+}
 
-        var durationSelect = document.createElement('select');
-        var durations = ["1 Month", "3 Months", "6 Months", "12 Months"];
-        durations.forEach(function(duration) {
-            var option = document.createElement('option');
-            option.setAttribute('value', duration);
-            option.textContent = duration;
-            durationSelect.appendChild(option);
-        });
-
-        var packagePriceInput = document.createElement('input');
-        packagePriceInput.setAttribute('type', 'text');
-        packagePriceInput.setAttribute('placeholder', 'Package Price');
-
-        
-        // Append input elements to form
-        form.appendChild(packageNameInput);
-        form.appendChild(durationSelect);
-        form.appendChild(packagePriceInput);
-        
-        // Replace card-body content with the form
-        var cardBody = packageCard.querySelector('.card-body');
-        cardBody.innerHTML = '';
-        cardBody.appendChild(form);
-        
-        // Append "Edit" button to the form
-        var cardBtnContainer = document.createElement('div');
-        cardBtnContainer.classList.add('card-btn-container');
-        var editButton = document.createElement('button');
-        editButton.classList.add('btn', 'btn-outline');
-        editButton.textContent = 'Edit';
-        editButton.id = 'card-edit-btn';
-        cardBtnContainer.appendChild(editButton);
-        form.appendChild(cardBtnContainer);
-        
-        // Add event listener to the new "Edit" button
-        editButton.addEventListener('click', function() {
-            editPackage();
-        });
-    }

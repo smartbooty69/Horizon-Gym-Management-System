@@ -483,11 +483,50 @@
                 </div>
           </div>
         </div>
+
+                                <!-- The EDIT PACKAGE MODAL -->
+        <div id="edit-package" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-form">
+                    <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="">
+                        <table>
+                            <tr>
+                                <td>Package Name</td>
+                                <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
+                            </tr>
+                            <tr>
+                                <td>Duration</td>
+                                <td><select id="packageduration" name="packageDuration">
+                                        <option>demo</option>
+                                        <option>demo1</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Price</td>
+                                <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+
+        
     </Section>
     <?php
         }
     }
     ?>
+   
+
    
 
 
