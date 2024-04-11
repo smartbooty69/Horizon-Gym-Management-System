@@ -136,6 +136,10 @@ window.onclick = function(event) {
   }
 }
 
+
+
+
+
 // Get the second modal
 var fullMemberDetailModal = document.getElementById("full-member-detail");
 
@@ -162,6 +166,32 @@ window.onclick = function(event) {
   }
 }
 
+
+// Get the renew modal
+var renewpackageDetailModal = document.getElementById("renew-package");
+
+// Get the button that opens the second modal
+var renewBtn = document.getElementById("renew-package-button");
+
+// Get the <span> element that closes the second modal
+var renewpackageDetailCloseSpan = renewpackageDetailModal.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the second modal
+renewBtn.onclick = function() {
+  renewpackageDetailModal.style.display = "block";
+}
+
+// When the user clicks on <span> (x) in the second modal, close it
+renewpackageDetailCloseSpan.onclick = function() {
+  renewpackageDetailModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the second modal, close it
+window.onclick = function(event) {
+  if (event.target == renewpackageDetailModal) {
+    renewpackageDetailModal.style.display = "none";
+  }
+}
 
 
 // Function to submit the add member form
@@ -362,4 +392,95 @@ document.getElementById('all-btn').addEventListener('click', function() {
   // Enable the "Expiring" button
   document.getElementById('exp-btn').disabled = false;
   this.disabled = true;
+
+  // Get the first modal
+  var addMembersModal = document.getElementById("add-members");
+
+  // Get the button that opens the first modal
+  var addMembersBtn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the first modal
+  var addMembersCloseSpan = addMembersModal.getElementsByClassName("close")[0];
+
+  // When the user clicks on the button, open the first modal
+  addMembersBtn.onclick = function() {
+    addMembersModal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x) in the first modal, close it
+  addMembersCloseSpan.onclick = function() {
+    addMembersModal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the first modal, close it
+  window.onclick = function(event) {
+    if (event.target == addMembersModal) {
+      addMembersModal.style.display = "none";
+    }
+  }
+
 });
+
+
+
+
+
+
+document.getElementById('card-edit-btn').addEventListener('click', function() {
+        editPackage();
+    });
+
+    function editPackage() {
+        // Get the parent container
+        var packageCard = document.querySelector('.package-card');
+        
+        // Create a new form element
+        var form = document.createElement('form');
+        
+        // Create input elements
+        var packageNameInput = document.createElement('input');
+        packageNameInput.setAttribute('type', 'text');
+        packageNameInput.setAttribute('placeholder', 'Package Name');
+
+        var durationSelect = document.createElement('select');
+        var durations = ["1 Month", "3 Months", "6 Months", "12 Months"];
+        durations.forEach(function(duration) {
+            var option = document.createElement('option');
+            option.setAttribute('value', duration);
+            option.textContent = duration;
+            durationSelect.appendChild(option);
+        });
+
+        var packagePriceInput = document.createElement('input');
+        packagePriceInput.setAttribute('type', 'text');
+        packagePriceInput.setAttribute('placeholder', 'Package Price');
+
+        var packageDescriptionTextarea = document.createElement('textarea');
+        packageDescriptionTextarea.setAttribute('placeholder', 'Package Description');
+        
+        // Append input elements to form
+        form.appendChild(packageNameInput);
+        form.appendChild(durationSelect);
+        form.appendChild(packagePriceInput);
+        form.appendChild(packageDescriptionTextarea);
+        
+        // Replace card-body content with the form
+        var cardBody = packageCard.querySelector('.card-body');
+        cardBody.innerHTML = '';
+        cardBody.appendChild(form);
+        
+        // Append "Edit" button to the form
+        var cardBtnContainer = document.createElement('div');
+        cardBtnContainer.classList.add('card-btn-container');
+        var editButton = document.createElement('button');
+        editButton.classList.add('btn', 'btn-outline');
+        editButton.textContent = 'Edit';
+        editButton.id = 'card-edit-btn';
+        cardBtnContainer.appendChild(editButton);
+        form.appendChild(cardBtnContainer);
+        
+        // Add event listener to the new "Edit" button
+        editButton.addEventListener('click', function() {
+            editPackage();
+        });
+    }

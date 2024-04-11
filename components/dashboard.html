@@ -193,11 +193,7 @@
                                 <div class="modal-content">
                                     <span class="close">&times;</span>
                                     <div class="modal-form">
-
-                                        
                                         <form id="addMemberForm" enctype="multipart/form-data"  method="POST" action="add_member.php">
-
-                                      
                                             <table>
                                                 <tr>
                                                     <td>Image</td>
@@ -249,8 +245,6 @@
                                                 </tr>
                                             </table>
                                         </form>
-                                        
-
                                     </div>
                                 </div>
                             </div>
@@ -325,6 +319,43 @@
                             </div>   
 
                            
+
+
+                            <div id="renew-package" class="modal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <div class="modal-form">
+                                        <form action="renew.php?id_new=<?php echo $id; ?>" method="post">
+                                            <table>
+                                                <tr>
+                                                    <td>MEMBER NAME:</td>
+                                                    <td><input type="text" name="memberName" value="<?php echo $row['memberName'] ?>"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Membership Package</td>
+                                                    <td>
+                                                        <select id="membershipPackage" name="membershipPackage">
+                                                            <option>demo</option>
+                                                            <option>demo1</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                    <input  class="btn btn-outline" type="submit" name="update" value="update">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+
+
+                            
                                        
 
                            <div class="box-body">
@@ -371,7 +402,7 @@
                                             <td><?php echo $row['membershipPackage']; ?></td>
                                             <td>
                                                 <div class="table-button">
-                                                   <button class="green-button btn btn-outline"><a href="renew.php?id=<?php echo $row['memberId']; ?>">Renew</a></button>
+                                                   <button class="green-button btn btn-outline" id="renew-package-button"><a href="renew.php?id=<?php echo $row['memberId']; ?>">Renew</a></button>
                                                     <button class="red-button btn btn-outline"><a href="delete.php?id=<?php echo $row['memberId']; ?>"><i class='bx bxs-user-minus'></i></a></button>
                                                     <button class="blue-button btn btn-outline" id="show-data-button"><i class='bx bx-id-card'></i></button> <!-- Added a class for easier selection -->
                                                 </div>
@@ -395,16 +426,20 @@
         <!--======= END OF DASHBOARD =======-->
 
         <!--======= ANALYTICS SECTION =======-->
-        <Section id="analytic" class="hidden">
+        <section id="analytic" class="hidden"> 
             <div class="analytics-container">
-                <div class="box box-hover">
-                    <iframe src="./piechart.php" width="100%" height="600px"></iframe>
+                <div class="box box-hover analytics-box">
+                    <object class="graph" type="text/html" data="./piechart.php"></object>
                 </div>
-                <div class="box box-hover">
-                    <iframe src="./piechart1.php" width="100%" height="600px"></iframe>
+                <div class="box box-hover analytics-box">
+                    <object class="graph" type="text/html" data="./piechart1.php"></object>
+                </div>
+                <div class="box box-hover analytics-box">
+                    <object class="graph" type="text/html" data="./graph.php"></object>
                 </div>
             </div>
-        </Section>
+        </section>
+        
         
 
 
@@ -414,89 +449,20 @@
         <div class="card-box">
             <div class="card package-card">
                 <div class="card-body">
-                    <form>
-                        <input type="text" placeholder="Package Name">
-                        <select>
-                            <option value="1 Month">1 Month</option>
-                            <option value="3 Months">3 Months</option>
-                            <option value="6 Months">6 Months</option>
-                            <option value="12 Months">12 Months</option>
-                        </select>
-                        <input type="text" placeholder="Package Price">
-                        <textarea placeholder="Package Description"></textarea>
-                    </form>
-                    <div class="card-btn-container">
-                        <button class="btn btn-outline" id="card-add-btn">Edit</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card package-card">
-                <div class="card-body">
-                    <form>
-                        <input type="text" placeholder="Package Name">
-                        <select>
-                            <option value="1 Month">1 Month</option>
-                            <option value="3 Months">3 Months</option>
-                            <option value="6 Months">6 Months</option>
-                            <option value="12 Months">12 Months</option>
-                        </select>
-                        <input type="text" placeholder="Package Price">
-                        <textarea placeholder="Package Description"></textarea>
-                    </form>
-                    <div class="card-btn-container">
-                        <button class="btn btn-outline" id="card-add-btn">Edit</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card package-card">
-                <div class="card-body">
-                    <form>
-                        <input type="text" placeholder="Package Name">
-                        <select>
-                            <option value="1 Month">1 Month</option>
-                            <option value="3 Months">3 Months</option>
-                            <option value="6 Months">6 Months</option>
-                            <option value="12 Months">12 Months</option>
-                        </select>
-                        <input type="text" placeholder="Package Price">
-                        <textarea placeholder="Package Description"></textarea>
-                    </form>
-                    <div class="card-btn-container">
-                        <button class="btn btn-outline" id="card-add-btn">Edit</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card package-card">
-                <div class="card-body">
-                    <form>
-                        <input type="text" placeholder="Package Name">
-                        <select>
-                            <option value="1 Month">1 Month</option>
-                            <option value="3 Months">3 Months</option>
-                            <option value="6 Months">6 Months</option>
-                            <option value="12 Months">12 Months</option>
-                        </select>
-                        <input type="text" placeholder="Package Price">
-                        <textarea placeholder="Package Description"></textarea>
-                    </form>
-                    <div class="card-btn-container">
-                        <button class="btn btn-outline" id="card-add-btn">Edit</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card package-card">
-                <div class="card-body">
-                    <form>
-                        <input type="text" placeholder="Package Name">
-                        <select>
-                            <option value="1 Month">1 Month</option>
-                            <option value="3 Months">3 Months</option>
-                            <option value="6 Months">6 Months</option>
-                            <option value="12 Months">12 Months</option>
-                        </select>
-                        <input type="text" placeholder="Package Price">
-                        <textarea placeholder="Package Description"></textarea>
-                    </form>
+                <table class="package-data-display">
+                    <tr>
+                        <td><strong>Package Name:</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Duration:</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Price:</strong></td>
+                        <td></td>
+                    </tr>
+                </table>
                     <div class="card-btn-container">
                         <button class="btn btn-outline" id="card-edit-btn">Edit</button>
                     </div>

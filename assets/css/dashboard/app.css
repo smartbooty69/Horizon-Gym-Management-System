@@ -916,18 +916,21 @@ a {
 .analytics-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.analytics-container .box{
-    margin: 15px;
+.analytics-container .analytics-box {
+    max-width: 100%; 
+    height: 60rem;
+    width: 60rem;
+    overflow: hidden; 
 }
 
-.line-graph{
-    height: 20rem;
-    width: 40rem;
+.analytics-container .analytics-box object {
+    display: block; 
+    height: 100%;
 }
 
-.line-graph{
-    height: 20rem;
-    width: 40rem;
-}
+
+
