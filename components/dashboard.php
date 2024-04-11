@@ -187,6 +187,19 @@
                                 </div>
                             </div>
 
+                            <!--PHP CODE TO DISPLAY PACKAGE IN SELECT BUTTON-->
+                            <?php
+                                        $con = new mysqli("localhost", "root", "", "horizon_gym");
+                                        if (mysqli_connect_error()) {
+                                            die("Connection failed: " . mysqli_connect_error());
+                                        } 
+                                        $query="SELECT `package_name` FROM `package_details`";
+                                        $result=mysqli_query($con,$query);
+                                        if(!$result)
+                                            die("query failed".mysqli_error());
+
+                            ?>  
+
                             <!-- The Modal ADD -->
                             <div id="add-members" class="modal">
                                 <!-- Modal content -->
@@ -210,8 +223,14 @@
                                                 <tr>
                                                     <td>Membership Package</td>
                                                     <td><select id="membershipPackage" name="membershipPackage">
-                                                            <option>demo</option>
-                                                            <option>demo1</option>
+                                                    <?php
+                                                         while($row=mysqli_fetch_assoc($result))
+                                                        {
+                                                    ?>
+                                                            <option><?php echo $row['package_name']; ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                         </select>
                                                     </td>
                                                 </tr>
@@ -490,7 +509,7 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <div class="modal-form">
-                    <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="">
+                    <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
                         <table>
                             <tr>
                                 <td>Package Name</td>
@@ -499,8 +518,10 @@
                             <tr>
                                 <td>Duration</td>
                                 <td><select id="packageduration" name="packageDuration">
-                                        <option>demo</option>
-                                        <option>demo1</option>
+                                        <option>1 month</option>
+                                        <option>3 month</option>
+                                        <option>6 month</option>
+                                        <option>12 month</option>
                                     </select>
                                 </td>
                             </tr>
