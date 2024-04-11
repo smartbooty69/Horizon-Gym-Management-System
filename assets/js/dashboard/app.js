@@ -423,7 +423,7 @@ document.getElementById('all-btn').addEventListener('click', function() {
 
 
 // Get the edit package modal
-var editPackageModal = document.getElementById("add-members");
+var editPackageModal = document.getElementById("edit-package");
 
 // Get the button that opens the edit package modal
 var editPackageBtn = document.getElementById("card-edit-btn");
