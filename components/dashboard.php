@@ -390,9 +390,9 @@
                                         <tr>
                                             <td><?php echo $row['memberId']; ?></td>
                                             <td>
-                                                <div class="member">
+                                              
                                                 <td><img src='"<?= $row['memberImage']; ?>"' height="25" width="25"></td> <!-- Update the image path accordingly -->
-                                                </div>
+                                               
                                             </td>
                                             <td><?php echo $row['memberName']; ?></td>
                                             <td><?php echo $row['joinDate']; ?></td>
@@ -404,7 +404,7 @@
                                                 <div class="table-button">
                                                    <button class="green-button btn btn-outline" id="renew-package-button"><a href="renew.php?id=<?php echo $row['memberId']; ?>">Renew</a></button>
                                                     <button class="red-button btn btn-outline"><a href="delete.php?id=<?php echo $row['memberId']; ?>"><i class='bx bxs-user-minus'></i></a></button>
-                                                    <button class="blue-button btn btn-outline" id="show-data-button"><i class='bx bx-id-card'></i></button> <!-- Added a class for easier selection -->
+                                                    <button class="blue-button btn btn-outline" id="show-data-button"><a href="display.php?id=<?php echo $row['memberId']; ?>"><i class='bx bx-id-card'></i></a></button> <!-- Added a class for easier selection -->
                                                 </div>
                                             </td>
                                         </tr>
@@ -445,32 +445,50 @@
 
 
     <!--======= PACKAGE SECTION =======-->
+        <?php
+                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                    if (mysqli_connect_error()) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    } 
+                    $query="SELECT * FROM `package_details`";
+                    $result=mysqli_query($con,$query);
+                    if(!$result)
+                        die("query failed".mysqli_error());
+                    else{
+                        while($row=mysqli_fetch_assoc($result))
+                        {
+
+        ?>     
     <Section id="package" class="hidden">
         <div class="card-box">
             <div class="card package-card">
-                <div class="card-body">
-                <table class="package-data-display">
-                    <tr>
-                        <td><strong>Package Name:</strong></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Duration:</strong></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Price:</strong></td>
-                        <td></td>
-                    </tr>
-                </table>
+                <div class="card-body">  
+                    <table class="package-data-display">
+                        <tr>
+                            <td><strong>Package Name:</strong></td>
+                            <td><?php echo $row['package_name']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duration:</strong></td>
+                            <td><?php echo $row['package_price']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price:</strong></td>
+                            <td><?php echo $row['package_duration']; ?></td>
+                        </tr>
+                    </table>
                     <div class="card-btn-container">
                         <button class="btn btn-outline" id="card-edit-btn">Edit</button>
                     </div>
                 </div>
-            </div>
           </div>
         </div>
     </Section>
+    <?php
+        }
+    }
+    ?>
+   
 
 
     <!--======= MAILEDITOR SECTION =======-->

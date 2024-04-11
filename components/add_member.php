@@ -14,13 +14,14 @@ if (isset($_POST['submit'])) {
     $memberEmail = $_POST['memberEmail'];
     $memberAddress = $_POST['memberAddress'];
     $memberGender = $_POST['memberGender'];
-
+    $age = $_POST['dateOfBirth'];
+/*
     // Calculate age from date of birth
     $dateOfBirth = $_POST['dateOfBirth']; // Assuming this is the name of your date of birth field
     $dob = new DateTime($dateOfBirth);
     $now = new DateTime();
     $age = $now->diff($dob)->y;
-
+*/
     $memberImage = $_FILES['memberImage'];
     $fileName = basename($memberImage['name']);
     $destination = $uploadDirectory . $fileName;
