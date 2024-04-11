@@ -455,14 +455,11 @@ document.getElementById('card-edit-btn').addEventListener('click', function() {
         packagePriceInput.setAttribute('type', 'text');
         packagePriceInput.setAttribute('placeholder', 'Package Price');
 
-        var packageDescriptionTextarea = document.createElement('textarea');
-        packageDescriptionTextarea.setAttribute('placeholder', 'Package Description');
         
         // Append input elements to form
         form.appendChild(packageNameInput);
         form.appendChild(durationSelect);
         form.appendChild(packagePriceInput);
-        form.appendChild(packageDescriptionTextarea);
         
         // Replace card-body content with the form
         var cardBody = packageCard.querySelector('.card-body');
