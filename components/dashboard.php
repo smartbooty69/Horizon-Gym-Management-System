@@ -462,6 +462,9 @@
 
 
     <!--======= PACKAGE SECTION =======-->
+           
+    <Section id="package" class="hidden">
+      
         <?php
                     $con = new mysqli("localhost", "root", "", "horizon_gym");
                     if (mysqli_connect_error()) {
@@ -474,11 +477,10 @@
                     else{
                         while($row=mysqli_fetch_assoc($result))
                         {
-
-        ?>     
-    <Section id="package" class="hidden">
-        <div class="card-box">
+?>
+  <div class="card-box">
             <div class="card package-card">
+
                 <div class="card-body">  
                     <table class="package-data-display">
                         <tr>
@@ -498,8 +500,12 @@
                         <button class="btn btn-outline" id="card-edit-btn">Edit</button>
                     </div>
                 </div>
-            </div>        
+            </div> 
         </div>
+        <?php
+                        }
+                    }
+                    ?>
         
         
 
@@ -538,11 +544,9 @@
                     </div>
                 </div>
             </div>
+            
     </Section>
-    <?php
-        }
-    }
-    ?>
+
     <!--======= END OF PACKAGE =======-->
    
     
