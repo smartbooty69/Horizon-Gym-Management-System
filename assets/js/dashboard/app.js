@@ -422,29 +422,37 @@ document.getElementById('all-btn').addEventListener('click', function() {
 });
 
 
-// Get the edit package modal
 var editPackageModal = document.getElementById("edit-package");
+var editPackageBtns = document.querySelectorAll(".card-body #card-edit-btn");
+var editPackageCloseSpan = editPackageModal.querySelector(".close");
 
-// Get the button that opens the edit package modal
-var editPackageBtn = document.getElementsByClassName("all-card-edit-btn");
-
-// Get the <span> element that closes the edit package modal
-var editPackageCloseSpan = editPackageModal.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the edit package modal
-editPackageBtn.onclick = function() {
-  editPackageModal.style.display = "block";
+// Function to open the edit package modal
+function openEditPackageModal() {
+    editPackageModal.style.display = "block";
 }
 
-// When the user clicks on <span> (x) in the edit package modal, close it
-editPackageCloseSpan.onclick = function() {
-  editPackageModal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the edit package modal, close it
-window.onclick = function(event) {
-  if (event.target == editPackageModal) {
+// Function to close the edit package modal
+function closeEditPackageModal() {
     editPackageModal.style.display = "none";
-  }
 }
+
+// Event listener for each edit button
+editPackageBtns.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        openEditPackageModal();
+    });
+});
+
+// Event listener for closing the modal using the close button
+editPackageCloseSpan.onclick = function() {
+    closeEditPackageModal();
+}
+
+// Event listener for closing the modal by clicking anywhere outside it
+window.onclick = function(event) {
+    if (event.target == editPackageModal) {
+        closeEditPackageModal();
+    }
+}
+
 

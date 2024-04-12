@@ -333,12 +333,12 @@ a {
 .box-header-right {
     text-transform: capitalize;
     display: flex;
-    flex-direction: row;
     font-size: 1.25rem;
     font-weight: 700;
     align-items: center;
-    justify-content: space-around;
+    justify-content: right;
     width: 35rem;
+    flex-direction: row-reverse;
 }
 
 .box-header-filter {
@@ -618,7 +618,13 @@ a {
 
 
 
-
+                                            /* =============== REMIDER PANEL=============== */
+.box-header-right .send-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0px;
+}
 
                                              /* =============== MAIL EDITOR PANEL=============== */
 
@@ -785,30 +791,30 @@ a {
 
 
 .card-box{
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-block;
     margin: 50px;
     margin-top: 40px;
-    justify-content: center;
+    justify-content: space-between;
 }
+
+
+
 .card {
     display: grid;
-    margin: 20px; /* Adjust as needed */
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
     background-color: #fff;
     justify-content: center;
     align-items: center;
     width: 262.400px;
-    
+    height: 262.400px;
+    margin-top: 10px;
 }
 
 
 /* Styles for the new card */
-.package-card {
-    margin-top: 20px; /* Adjust as needed */
+.package-card { /* Adjust as needed */
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

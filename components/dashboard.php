@@ -98,6 +98,12 @@
                     <span>mail</span>
                 </a>
             </li>
+            <li>
+                <a href="#reminder">
+                    <i class='bx bx-alarm'></i>
+                    <span>reminder</span>
+                </a>
+            </li>
             <li class="sidebar-submenu">
                 <a href="#" class="sidebar-menu-dropdown">
                     <i class='bx bx-cog'></i>
@@ -169,17 +175,17 @@
                                 Members 
                                 <div class="box-header-right">
                                     <!-- Search input field -->
-                                    <div class="box-header-search">
+                                    <!-- <div class="box-header-search">
                                         <input type="text" id="searchInput" placeholder="Search members..." class="search-input"> 
-                                    </div>
-                                    <div class="box-header-filter">
+                                    </div> -->
+                                    <!-- <div class="box-header-filter"> -->
                                         <!-- Add member button -->
-                                        <button class="btn btn-outline" id="exp-btn">Expiring</button>
+                                        <!-- <button class="btn btn-outline" id="exp-btn">Expiring</button>
                                     </div>
-                                    <div class="box-header-filter">
+                                    <div class="box-header-filter"> -->
                                         <!-- Add member button -->
-                                        <button class="btn btn-outline" id="all-btn">All</button>
-                                    </div>
+                                        <!-- <button class="btn btn-outline" id="all-btn">All</button>
+                                    </div> -->
                                 <!-- Add member button -->
                                     <div class="box-header-button">
                                         <button class="btn btn-outline" id="myBtn">Add Member</button>
@@ -270,8 +276,8 @@
                         
                             
                             <!-- The Modal DISPAY -->
-                            <div id="full-member-detail" class="modal">
-                                <!-- Modal content -->
+                            <!-- <div id="full-member-detail" class="modal">
+                                
                                 <div class="modal-content">
                                     <span class="close">&times;</span>
                                     <div class="modal-form">
@@ -335,13 +341,13 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>   
+                            </div>    -->
 
                            
 
                                  <!--=================  POP RENEW MODAL  =======================-->
-                            <div id="renew-package" class="modal">
-                                <!-- Modal content -->
+                            <!-- <div id="renew-package" class="modal">
+                                
                                 <div class="modal-content">
                                     <span class="close">&times;</span>
                                     <div class="modal-form">
@@ -369,12 +375,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
-                            
-
-
-
-                            
+                            </div>                         -->
                                        
 
                            <div class="box-body">
@@ -386,7 +387,6 @@
                                             <th>Name</th>
                                             <th>Join Date</th>
                                             <th>Membership</th>
-                                            <th>Package</th>
                                         </tr>    
                                     </thead>
 
@@ -415,9 +415,6 @@
                                             </td>
                                             <td><?php echo $row['memberName']; ?></td>
                                             <td><?php echo $row['joinDate']; ?></td>
-                                            <td>
-                                                <span class="gym-status membership-active">active</span>
-                                            </td>
                                             <td><?php echo $row['membershipPackage']; ?></td>
                                             <td>
                                                 <div class="table-button">
@@ -458,6 +455,7 @@
                 </div>
             </div>
         </section>
+        <!--======= END OF ANALYTICS =======-->
         
         
 
@@ -497,60 +495,330 @@
                         </tr>
                     </table>
                     <div class="card-btn-container">
-                        <button class="btn btn-outline all-card-edit-btn" id="card-edit-btn">Edit</button>
+                        <button class="btn btn-outline" id="card-edit-btn">Edit</button>
                     </div>
                 </div>
-          </div>
+            </div>        
         </div>
+        
+        
 
                                 <!-- The EDIT PACKAGE MODAL -->
-        <div id="edit-package" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="modal-form">
-                    <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
-                        <table>
-                            <tr>
-                                <td>Package Name</td>
-                                <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
-                            </tr>
-                            <tr>
-                                <td>Duration</td>
-                                <td><select id="packageduration" name="packageDuration">
-                                        <option>1 month</option>
-                                        <option>3 month</option>
-                                        <option>6 month</option>
-                                        <option>12 month</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Price</td>
-                                <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
-                            </tr>
-                        </table>
-                    </form>
+            <div id="edit-package" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="modal-form">
+                        <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
+                            <table>
+                                <tr>
+                                    <td>Package Name</td>
+                                    <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
+                                </tr>
+                                <tr>
+                                    <td>Duration</td>
+                                    <td><select id="packageduration" name="packageDuration">
+                                            <option>1 month</option>
+                                            <option>3 month</option>
+                                            <option>6 month</option>
+                                            <option>12 month</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-
-        
     </Section>
     <?php
         }
     }
     ?>
+    <!--======= END OF PACKAGE =======-->
    
+    
+    <!--======= REMINDER SECTION =======-->
+    <Section id= "reminder" class="hidden"> 
+        <div class="main-content">
+            <div class="row">
+                <div class="col-3 col-md-6 col-sm-12">
+                </div>
+                <div class="col-12">
+                    <!-- ORDERS TABLE -->
+                    <div class="box">
+                        <!-- BOX HEADER -->
+                        <div class="box-header">
+                            Members 
+                            <div class="box-header-right">
+                                <div class="send-container">
+                                    <button class="send">
+                                        <div class="wrapper">
+                                        <i class="fa-regular fa-paper-plane"></i>
+                                        </div>
+                                    <span>Send</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
-   
+                        <!--PHP CODE TO DISPLAY PACKAGE IN SELECT BUTTON-->
+                        <?php
+                                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                                    if (mysqli_connect_error()) {
+                                        die("Connection failed: " . mysqli_connect_error());
+                                    } 
+                                    $query="SELECT `package_name` FROM `package_details`";
+                                    $result=mysqli_query($con,$query);
+                                    if(!$result)
+                                        die("query failed".mysqli_error());
 
+                        ?>  
 
+                        <!-- The Modal ADD -->
+                        <div id="add-members" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div class="modal-form">
+                                    <form id="addMemberForm" enctype="multipart/form-data"  method="POST" action="add_member.php">
+                                        <table>
+                                            <tr>
+                                                <td>Image</td>
+                                                <td><input type="file" id="memberImage" name="memberImage"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Member Name</td>
+                                                <td><input type="text" id="memberName" name="memberName" placeholder="Member Name"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Join Date</td>
+                                                <td><input type="date" id="joinDate" name="joinDate"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Membership Package</td>
+                                                <td><select id="membershipPackage" name="membershipPackage">
+                                                <?php
+                                                    while($row=mysqli_fetch_assoc($result))
+                                                    {
+                                                ?>
+                                                        <option><?php echo $row['package_name']; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone Number</td>
+                                                <td><input type="text" id="memberPhone" name="memberPhone" placeholder="Phone"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email</td>
+                                                <td><input type="email" id="memberEmail" name="memberEmail" placeholder="Email"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Date of Birth</td>
+                                                <td><input type="date" id="memberAge" name="dateOfBirth" placeholder="Age"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Address</td>
+                                                <td><input type="text" id="memberAddress" name="memberAddress" placeholder="Address"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Gender</td>
+                                                <td><select id="memberGender" name="memberGender">
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                        <option value="other">Other</option>
+                                                    </select></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        
+                        <!-- The Modal DISPAY -->
+                        <div id="full-member-detail" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div class="modal-form">
+                                    <form id="displayMemberForm" enctype="multipart/form-data">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    Image
+                                                </td>
+                                                <td><img src="" id="displayMemberImage" alt="Member Image"></td>
+                                            </tr> 
+                                            <tr>
+                                                <td>
+                                                    Member Name
+                                                </td>
+                                                <td><span id="displayMemberName"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Join Date
+                                                </td>
+                                                <td><span id="displayJoinDate"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Membership Package
+                                                </td>
+                                                <td><span id="displayMembershipPackage"></span></td>
+                                            </tr>  
+                                            <tr>
+                                                <td>
+                                                    Phone Number
+                                                </td>
+                                                <td><span id="displayMemberPhone"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Email
+                                                </td>
+                                                <td><span id="displayMemberEmail"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Date of Birth
+                                                </td>
+                                                <td><span id="displayMemberAge"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Address
+                                                </td>
+                                                <td><span id="displayMemberAddress"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Gender
+                                                </td>
+                                                <td><span id="displayMemberGender"></span></td>
+                                            </tr> 
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>   
+
+                    
+
+                            <!--=================  POP RENEW MODAL  =======================-->
+                        <div id="renew-package" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div class="modal-form">
+                                    <form action="renew.php?id_new=<?php echo $id; ?>" method="post">
+                                        <table>
+                                            <tr>
+                                                <td>MEMBER NAME:</td>
+                                                <td><input type="text" name="memberName" value="<?php echo $row['memberName'] ?>"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Membership Package</td>
+                                                <td>
+                                                    <select id="membershipPackage" name="membershipPackage">
+                                                        <option>demo</option>
+                                                        <option>demo1</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                <input  class="btn btn-outline" type="submit" name="update" value="update">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+            
+                        
+
+                    <div class="box-body">
+                            <table id="display-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Join Date</th>
+                                        <th>Membership</th>
+                                        <th>Package</th>
+                                    </tr>    
+                                </thead>
+
+                                <!--DATABASE CONNECTION AND QUERY FOR DISPLAYING MEMBER DATA-->
+                                <?php
+                                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                                    if (mysqli_connect_error()) {
+                                        die("Connection failed: " . mysqli_connect_error());
+                                    } 
+                                    $query="SELECT `memberId`, `memberImage`, `memberName`, `membershipPackage`, `joinDate` FROM `member_details`";
+                                    $result=mysqli_query($con,$query);
+                                    if(!$result)
+                                        die("query failed".mysqli_error());
+                                    else{
+                                        while($row=mysqli_fetch_assoc($result))
+                                        {
+
+                                ?>  
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo $row['memberId']; ?></td>
+                                        <td>
+                                        
+                                            <td><img src='"<?= $row['memberImage']; ?>"' height="25" width="25"></td> <!-- Update the image path accordingly -->
+                                        
+                                        </td>
+                                        <td><?php echo $row['memberName']; ?></td>
+                                        <td><?php echo $row['joinDate']; ?></td>
+                                        <td><?php echo $row['membershipPackage']; ?></td>
+                                        <!-- <td>
+                                            <div class="table-button">
+                                            <button class="green-button btn btn-outline" id="renew-package-button"><a href="renew.php?id=<?php echo $row['memberId']; ?>">Renew</a></button>
+                                                <button class="red-button btn btn-outline"><a href="delete.php?id=<?php echo $row['memberId']; ?>"><i class='bx bxs-user-minus'></i></a></button>
+                                                <button class="blue-button btn btn-outline" id="show-data-button"><a href="display.php?id=<?php echo $row['memberId']; ?>"><i class='bx bx-id-card'></i></a></button> 
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                </tbody>
+                                <?php
+                                        }
+                                    }
+                                    ?>
+                            </table>
+                        </div>                            
+                    </div>
+                    <!-- END OF MEMBERS TABLE -->
+                </div>
+            </div>
+        </div> 
+    </Section>
+    <!--======= END OF REMINDER =======-->
+
+    
     <!--======= MAILEDITOR SECTION =======-->
     <Section id="maileditor" class="hidden">
         <div class="maileditor-container">
@@ -654,7 +922,7 @@
             </div>
         </div>
     </Section>
-    </div>
+    <!--======= END OF MAILEDITOR =======-->
 
     <div class="overlay"></div>
     <!-- Success Modal -->
