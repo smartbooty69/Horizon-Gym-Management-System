@@ -333,12 +333,12 @@ a {
 .box-header-right {
     text-transform: capitalize;
     display: flex;
-    flex-direction: row;
     font-size: 1.25rem;
     font-weight: 700;
     align-items: center;
-    justify-content: space-around;
+    justify-content: right;
     width: 35rem;
+    flex-direction: row-reverse;
 }
 
 .box-header-filter {
@@ -350,7 +350,7 @@ a {
     padding: 5px 5px;
     border-radius: 10px;
     justify-content: space-around;
-    width: 9rem;
+    width: 6rem;
 }
 
 .box-header-filter button {
@@ -618,7 +618,13 @@ a {
 
 
 
-
+                                            /* =============== REMIDER PANEL=============== */
+.box-header-right .send-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0px;
+}
 
                                              /* =============== MAIL EDITOR PANEL=============== */
 
@@ -785,36 +791,30 @@ a {
 
 
 .card-box{
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-block;
     margin: 50px;
     margin-top: 40px;
-    justify-content: center;
-
-
+    justify-content: space-between;
 }
+
+
+
 .card {
     display: grid;
-    margin: 20px; /* Adjust as needed */
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
     background-color: #fff;
     justify-content: center;
     align-items: center;
     width: 262.400px;
-    
+    height: 262.400px;
+    margin-top: 10px;
 }
 
-.card i {
-    font-size: 7rem;
-    color: #007bff;
-}
 
 /* Styles for the new card */
-.new-card {
-    margin-top: 20px; /* Adjust as needed */
+.package-card { /* Adjust as needed */
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -823,25 +823,25 @@ a {
 }
 
 /* Styles for the form within the new card */
-.new-card form {
+.package-card form {
     display: flex;
     flex-direction: column;
 }
 
-.new-card form input,
-.new-card form textarea {
+.package-card form input,
+.package-card form textarea {
     margin-bottom: 10px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 3px;
 }
 
-.new-card form input[type="text"],
-.new-card form textarea {
+.package-card form input[type="text"],
+.package-card form textarea {
     width: 100%;
 }
 
-.new-card form select {
+.package-card form select {
     margin-bottom: 10px;
     padding: 8px;
     border: 1px solid #ccc;
@@ -849,25 +849,25 @@ a {
     width: 100%;
 }
 
-.new-card form select:focus {
+.package-card form select:focus {
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.new-card form option {
+.package-card form option {
     padding: 8px;
     border-bottom: 1px solid #ccc;
     background-color: #fff;
     color: #333;
 }
 
-.new-card form option:last-child {
+.package-card form option:last-child {
     border-bottom: none; /* Remove border from the last option */
 }
 
 
-.new-card form input[type="submit"] {
+.package-card form input[type="submit"] {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -875,7 +875,7 @@ a {
     cursor: pointer;
 }
 
-.new-card form input[type="submit"]:hover {
+.package-card form input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
@@ -912,28 +912,37 @@ a {
 }
 
 
-
-
-
-
-
+.analytics-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px;
+    height: 30rem;
+    width: 30rem;
+    overflow: hidden; 
+}
 
 
 .analytics-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.analytics-container .box{
-    margin: 15px;
+
+
+.analytics-container .graph {
+    display: block; 
+    height: 100%;
+    width: 100%; 
 }
 
-.line-graph{
-    height: 20rem;
-    width: 40rem;
-}
 
-.line-graph{
-    height: 20rem;
-    width: 40rem;
-}
+
+

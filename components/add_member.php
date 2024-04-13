@@ -14,7 +14,6 @@ if (isset($_POST['submit'])) {
     $memberEmail = $_POST['memberEmail'];
     $memberAddress = $_POST['memberAddress'];
     $memberGender = $_POST['memberGender'];
-
     // Calculate age from date of birth
     $dateOfBirth = $_POST['dateOfBirth']; // Assuming this is the name of your date of birth field
     $dob = new DateTime($dateOfBirth);
@@ -43,5 +42,7 @@ if (isset($_POST['submit'])) {
 }
 
 $con->close();
+header("location:../components/dashboard.php");
+exit; 
 ?>
 
