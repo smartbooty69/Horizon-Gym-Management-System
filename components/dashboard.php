@@ -486,8 +486,9 @@
                     else{
                         while($row=mysqli_fetch_assoc($result))
                         {
-?>
-  <div class="card-box">
+        ?>
+        
+        <div class="card-box">
             <div class="card package-card" id="package-card-id">
 
                 <div class="card-body">  
@@ -513,27 +514,27 @@
         </div>
         
         <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the button element by its ID
-        const editButton = document.getElementById('card-edit-btn');
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get the button element by its ID
+                const editButton = document.getElementById('card-edit-btn');
 
-        // Add a click event listener to the button
-        editButton.addEventListener('click', function() {
-            // Get the target section element by its ID
-            const modalId = editButton.getAttribute('data-target');
-            const targetModal = document.getElementById(modalId);
+                // Add a click event listener to the button
+                editButton.addEventListener('click', function() {
+                    // Get the target section element by its ID
+                    const modalId = editButton.getAttribute('data-target');
+                    const targetModal = document.getElementById(modalId);
 
-            // Show the modal if it exists
-            if (targetModal) {
-                targetModal.style.display = 'block'; // Display the modal
-            }
-        });
-    });
-</script>
-        <?php
+                    // Show the modal if it exists
+                    if (targetModal) {
+                        targetModal.style.display = 'block'; // Display the modal
+                    }
+                });
+            });
+        </script>
+                <?php
                         }
                     }
-                    ?>
+                ?>
         
         
 
@@ -610,15 +611,12 @@
                         Members 
                         <div class="box-header-right">
                             <div class="send-container">
-                                <form action="rem_email.php" method="post">
-                                    <input type="hidden" name="message" value="Your membership is about to expire. Please renew soon.">
-                                    <button type="submit" class="send_remainder"> 
-                                        <div class="wrapper">
-                                            <i class="fa-regular fa-paper-plane"></i>
-                                        </div>
-                                        <span>Send Reminder</span>
-                                    </button>
-                                </form>
+                                <button type="button" class="send_remainder"> 
+                                    <div class="wrapper">
+                                        <i class="fa-regular fa-paper-plane"></i>
+                                    </div>
+                                    <span>Send Reminder</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -675,27 +673,27 @@
                         </table>
                     </div>                            
                 </div>
-                <!-- END OF MEMBERS TABLE -->
+                <!-- END OF REMINDERS TABLE -->
             </div>
         </div>
     </div>
     <!-- Modal for displaying success or error messages -->
-<div class="modal" id="messageModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitle"></h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <div class="modal" id="messageModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="modalBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 </Section>
+
 
     <!--======= END OF REMINDER =======-->
 
@@ -826,9 +824,6 @@
   
 
     <!-- SCRIPT -->
-    <!-- CHART JS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
-    <script src="../assets/js/analytics/acquisitions.js"></script>
     <!-- BOOTSTARP JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- APP JS -->
@@ -883,6 +878,54 @@
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sendReminderButton = document.querySelector('.send_remainder');
+
+    sendReminderButton.addEventListener('click', function() {
+        // Retrieve message content from the mail editor section
+        const messageContent = document.getElementById('text-input').innerHTML;
+
+        // Perform AJAX request to send reminder emails
+        fetch('rem_email.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'message=' + encodeURIComponent(messageContent)
+        })
+        .then(response => response.json()) // Parse response as JSON
+        .then(data => {
+            if (data.success) {
+                // Show success modal
+                showSuccessModal(data.message);
+            } else {
+                // Show error modal
+                showErrorModal(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error sending reminder emails:', error);
+        });
+    });
+
+    // Function to show success modal
+    function showSuccessModal(message) {
+        document.getElementById('modalTitle').textContent = 'Success';
+        document.getElementById('modalBody').textContent = message;
+        const successModal = new bootstrap.Modal(document.getElementById('messageModal'));
+        successModal.show();
+    }
+
+    // Function to show error modal
+    function showErrorModal(message) {
+        document.getElementById('modalTitle').textContent = 'Error';
+        document.getElementById('modalBody').textContent = message;
+        const errorModal = new bootstrap.Modal(document.getElementById('messageModal'));
+        errorModal.show();
+    }
+});
+
 
 
     </script>
