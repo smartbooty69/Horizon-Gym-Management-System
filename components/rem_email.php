@@ -7,7 +7,6 @@ require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 
-// Check if the message parameter is set
 if (isset($_POST['message'])) {
     $messageContent = $_POST['message'];
 
@@ -25,12 +24,13 @@ if (isset($_POST['message'])) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // SQL query to fetch all member emails
-    $sql = "SELECT memberName, memberEmail FROM member_details";
-    $result = $conn->query($sql);
+    // SQL query to fetch members whose package is expiring within 5 days
+    $currentDate = date('Y-m-d');
+    $query = "SELECT memberName, memberEmail FROM member_details 
+              WHERE DATEDIFF(packageExpiry, '$currentDate') <= 5";
+    $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
-        // Create a new PHPMailer instance
         $mail = new PHPMailer(true);
 
         try {
@@ -47,7 +47,7 @@ if (isset($_POST['message'])) {
             // Set email parameters
             $mail->setFrom('samuelhanok@gmail.com', 'Horizon Gym');
             $mail->isHTML(true);
-            $mail->Subject = 'GYM NOTICE';
+            $mail->Subject = 'Membership Expiry Reminder';
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             // Loop through each member and send email
@@ -67,19 +67,23 @@ if (isset($_POST['message'])) {
                 $mail->Body = '';
             }
 
-            echo 'Messages have been sent to all gym members';
+            // Send success message to display in modal
+            echo json_encode(array('success' => true, 'message' => 'Reminder emails have been sent successfully.'));
 
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            // Send error message to display in modal
+            echo json_encode(array('success' => false, 'message' => 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo));
         }
 
     } else {
-        echo "No members found in the database";
+        // No members found
+        echo json_encode(array('success' => false, 'message' => 'No members found whose membership is expiring within 5 days.'));
     }
 
     // Close connection
     $conn->close();
 } else {
-    echo "Message content not received";
+    // Message content not received
+    echo json_encode(array('success' => false, 'message' => 'Message content not received.'));
 }
 ?>

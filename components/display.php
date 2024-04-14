@@ -1,8 +1,20 @@
        <!-- The Modal DISPAY -->
        <html>
     <head>
-        <style>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 
+        <style>
+            body
+{ 
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+            #displayMemberImage{
+                border-radius: 120px;
+            }
+            table{
+                font-weight: 900;
+                font-size: 15px;
+            }
             .modal {
                 /* Hidden by default */
                 position: fixed;
@@ -24,7 +36,7 @@
                 width: 80%;
                 max-width: 600px; /* Adjusted for larger screens */
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add some shadow */
-                margin-top: 50px;
+                margin-top: 15px;
             }
 
             /* Close Button */
@@ -142,6 +154,24 @@
 
         
         </style>    
+        <script>
+        // Function to redirect to dashboard.html
+        function redirectToDashboard() {
+            window.location.href = "dashboard.php";
+        }
+        
+        // Wait for the document to be fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Find the div element by its ID
+            var redirectDiv = document.getElementById("full-member-detail");
+
+            // Add a click event listener to the div
+            redirectDiv.addEventListener("click", function() {
+                // Call the function to redirect to dashboard.html
+                redirectToDashboard();
+            });
+        });
+    </script>
     </head>
     
         <body>
@@ -164,73 +194,78 @@
                     <div id="full-member-detail" class="modal">
                                 <!-- Modal content -->
                                 <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <div class="modal-form">
+                                    
+                                    <div class="modal-form" style="margin-bottom:10px">
                                         <form id="displayMemberForm" enctype="multipart/form-data">
                                             <table>
                                             <tr>
-                                                    <td>
+                                                    
+                                                    <td colspan="2" align="center"><img src="uploads/<?php echo $row['memberImage']; ?>" id="displayMemberImage" alt="Member Image" height="125" width="125"></td>
+                                                </tr>
+                                            <tr>
+                                                    <td style="padding-left:110px">
                                                         Member ID
                                                     </td>
                                                     <td><span id="displayMemberImage"><?php echo $row['memberId']; ?></span></td>
                                                 </tr> 
+                                                 
                                                 <tr>
-                                                    <td>
-                                                        Image
-                                                    </td>
-                                                    <td><img src="<?php echo $row['memberImage']; ?>" id="displayMemberImage" alt="Member Image"></td>
-                                                </tr> 
-                                                <tr>
-                                                    <td>
+                                                    <td style="padding-left:110px">
                                                         Member Name
                                                     </td>
                                                     <td><span id="displayMemberName"><?php echo $row['memberName']; ?></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
+                                                    <td style="padding-left:110px">
                                                         Join Date
                                                     </td>
                                                     <td><span id="displayJoinDate"><?php echo $row['joinDate']; ?></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
+                                                    <td style="padding-left:110px">
                                                         Membership Package
                                                     </td>
                                                     <td><span id="displayMembershipPackage"><?php echo $row['membershipPackage']; ?></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding-left:110px">
+                                                        Expiry Date
+                                                    </td>
+                                                    <td><span id="displayMembershipPackage"><?php echo $row['packageExpiry']; ?></span></td>
                                                 </tr>  
                                                 <tr>
-                                                    <td>
+                                                    <td style="padding-left:110px">
                                                         Phone Number
                                                     </td>
                                                     <td><span id="displayMemberPhone"><?php echo $row['memberPhone']; ?></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
+                                                    <td style="padding-left:110px">
                                                         Email
                                                     </td>
                                                     <td><span id="displayMemberEmail"><?php echo $row['memberEmail']; ?></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
-                                                        Date of Birth
+                                                    <td style="padding-left:110px">
+                                                        Age
                                                     </td>
                                                     <td><span id="displayMemberAge"><?php echo $row['memberAge']; ?></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
+                                                    <td style="padding-left:110px">
                                                         Address
                                                     </td>
                                                     <td><span id="displayMemberAddress"><?php echo $row['memberAddress']; ?></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
+                                                    <td style="padding-left:110px">
                                                         Gender
                                                     </td>
                                                     <td><span id="displayMemberGender"><?php echo $row['memberGender']; ?></span></td>
                                                 </tr> 
                                                 <tr>
                                                     
-                                                <td colspan="2"><button class="blue-button btn btn-outline" id="show-data-button"><a href="dashboard.php">GO BACK</a></button></td> <!-- Added a class for easier selection -->
+                                                <td colspan="2" align="center"><a href="dashboard.php" class="blue-button btn btn-outline" style="text-decoration:none;">GO BACK</a></td>
                                                 
                                                 </tr> 
                                             </table>

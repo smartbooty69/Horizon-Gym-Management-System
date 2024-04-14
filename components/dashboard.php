@@ -52,6 +52,19 @@
         .modal-backdrop.show {
             z-index: 1040; /* Ensure backdrop is behind modal */
         }
+       .send_remainder
+       {
+        border-radius: 10px;
+        padding: 5px;
+        background-color:#40aad1;
+        border: 0;
+        color: #3a3c3d;
+       }
+       .send_remainder:hover{
+        cursor: pointer;
+        background-color: skyblue;
+        color:#28292a;
+       }
     </style>
     
 
@@ -351,11 +364,7 @@
                                 <div class="modal-content">
                                     <span class="close">&times;</span>
                                     <div class="modal-form">
-                                        <form action="renew.php?id_new=<?php echo $id; ?>" method="post">
-                                            <table>
-                                                <tr>
-                                                    <td>MEMBER NAME:</td>
-                                                    <td><input type="text" name="memberName" value="<?php echo $row['memberName'] ?>"></td>
+                                        <form action="renew.php?id_new="></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Membership Package</td>
@@ -408,11 +417,11 @@
                                     <tbody>
                                         <tr>
                                             <td><?php echo $row['memberId']; ?></td>
-                                            <td>
+                                            <!-- <td> -->
                                               
-                                                <td><img src='"<?= $row['memberImage']; ?>"' height="25" width="25"></td> <!-- Update the image path accordingly -->
+                                                <td><img src="uploads/<?= $row['memberImage']; ?>" height="25" width="25"></td> <!-- Update the image path accordingly -->
                                                
-                                            </td>
+                                            <!-- </td> -->
                                             <td><?php echo $row['memberName']; ?></td>
                                             <td><?php echo $row['joinDate']; ?></td>
                                             <td><?php echo $row['membershipPackage']; ?></td>
@@ -479,7 +488,7 @@
                         {
 ?>
   <div class="card-box">
-            <div class="card package-card">
+            <div class="card package-card" id="package-card-id">
 
                 <div class="card-body">  
                     <table class="package-data-display">
@@ -488,20 +497,39 @@
                             <td><?php echo $row['package_name']; ?></td>
                         </tr>
                         <tr>
-                            <td><strong>Duration:</strong></td>
+                            <td><strong>Price:</strong></td>
                             <td><?php echo $row['package_price']; ?></td>
                         </tr>
                         <tr>
-                            <td><strong>Price:</strong></td>
+                            <td><strong>Duration:</strong></td>
                             <td><?php echo $row['package_duration']; ?></td>
                         </tr>
                     </table>
                     <div class="card-btn-container">
-                        <button class="btn btn-outline" id="card-edit-btn">Edit</button>
+                        <button class="btn btn-outline" id="card-edit-btn" data-target="edit-package">Edit</button>
                     </div>
                 </div>
             </div> 
         </div>
+        
+        <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the button element by its ID
+        const editButton = document.getElementById('card-edit-btn');
+
+        // Add a click event listener to the button
+        editButton.addEventListener('click', function() {
+            // Get the target section element by its ID
+            const modalId = editButton.getAttribute('data-target');
+            const targetModal = document.getElementById(modalId);
+
+            // Show the modal if it exists
+            if (targetModal) {
+                targetModal.style.display = 'block'; // Display the modal
+            }
+        });
+    });
+</script>
         <?php
                         }
                     }
@@ -513,7 +541,7 @@
             <div id="edit-package" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <span class="close" id="close-package-edit">&times;</span>
                     <div class="modal-form">
                         <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
                             <table>
@@ -524,10 +552,10 @@
                                 <tr>
                                     <td>Duration</td>
                                     <td><select id="packageduration" name="packageDuration">
-                                            <option>1 month</option>
-                                            <option>3 month</option>
-                                            <option>6 month</option>
-                                            <option>12 month</option>
+                                            <option>1 MONTH</option>
+                                            <option>3 MONTHS</option>
+                                            <option>6 MONTHS</option>
+                                            <option>12 MONTHS</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -544,6 +572,24 @@
                     </div>
                 </div>
             </div>
+            <script>
+        // Function to redirect to dashboard.html
+        function redirectToDashboard() {
+            window.location.href = "dashboard.php";
+        }
+        
+        // Wait for the document to be fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Find the div element by its ID
+            var redirectDiv = document.getElementById("close-package-edit");
+
+            // Add a click event listener to the div
+            redirectDiv.addEventListener("click", function() {
+                // Call the function to redirect to dashboard.html
+                redirectToDashboard();
+            });
+        });
+    </script>
             
     </Section>
 
@@ -551,275 +597,106 @@
    
     
     <!--======= REMINDER SECTION =======-->
-    <Section id= "reminder" class="hidden"> 
-        <div class="main-content">
-            <div class="row">
-                <div class="col-3 col-md-6 col-sm-12">
-                </div>
-                <div class="col-12">
-                    <!-- ORDERS TABLE -->
-                    <div class="box">
-                        <!-- BOX HEADER -->
-                        <div class="box-header">
-                            Members 
-                            <div class="box-header-right">
-                                <div class="send-container">
-                                    <button class="send">
+    <Section id="reminder" class="hidden"> 
+    <div class="main-content">
+        <div class="row">
+            <div class="col-3 col-md-6 col-sm-12">
+            </div>
+            <div class="col-12">
+                <!-- ORDERS TABLE -->
+                <div class="box">
+                    <!-- BOX HEADER -->
+                    <div class="box-header">
+                        Members 
+                        <div class="box-header-right">
+                            <div class="send-container">
+                                <form action="rem_email.php" method="post">
+                                    <input type="hidden" name="message" value="Your membership is about to expire. Please renew soon.">
+                                    <button type="submit" class="send_remainder"> 
                                         <div class="wrapper">
-                                        <i class="fa-regular fa-paper-plane"></i>
+                                            <i class="fa-regular fa-paper-plane"></i>
                                         </div>
-                                    <span>Send</span>
+                                        <span>Send Reminder</span>
                                     </button>
-                                </div>
+                                </form>
                             </div>
                         </div>
-
-                        <!--PHP CODE TO DISPLAY PACKAGE IN SELECT BUTTON-->
-                        <?php
-                                    $con = new mysqli("localhost", "root", "", "horizon_gym");
-                                    if (mysqli_connect_error()) {
-                                        die("Connection failed: " . mysqli_connect_error());
-                                    } 
-                                    $query="SELECT `package_name` FROM `package_details`";
-                                    $result=mysqli_query($con,$query);
-                                    if(!$result)
-                                        die("query failed".mysqli_error());
-
-                        ?>  
-
-                        <!-- The Modal ADD -->
-                        <div id="add-members" class="modal">
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <div class="modal-form">
-                                    <form id="addMemberForm" enctype="multipart/form-data"  method="POST" action="add_member.php">
-                                        <table>
-                                            <tr>
-                                                <td>Image</td>
-                                                <td><input type="file" id="memberImage" name="memberImage"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Member Name</td>
-                                                <td><input type="text" id="memberName" name="memberName" placeholder="Member Name"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Join Date</td>
-                                                <td><input type="date" id="joinDate" name="joinDate"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Membership Package</td>
-                                                <td><select id="membershipPackage" name="membershipPackage">
-                                                <?php
-                                                    while($row=mysqli_fetch_assoc($result))
-                                                    {
-                                                ?>
-                                                        <option><?php echo $row['package_name']; ?></option>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Phone Number</td>
-                                                <td><input type="text" id="memberPhone" name="memberPhone" placeholder="Phone"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Email</td>
-                                                <td><input type="email" id="memberEmail" name="memberEmail" placeholder="Email"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Date of Birth</td>
-                                                <td><input type="date" id="memberAge" name="dateOfBirth" placeholder="Age"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Address</td>
-                                                <td><input type="text" id="memberAddress" name="memberAddress" placeholder="Address"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Gender</td>
-                                                <td><select id="memberGender" name="memberGender">
-                                                        <option value="male">Male</option>
-                                                        <option value="female">Female</option>
-                                                        <option value="other">Other</option>
-                                                    </select></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
-                                            </tr>
-                                        </table>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        
-                        <!-- The Modal DISPAY -->
-                        <div id="full-member-detail" class="modal">
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <div class="modal-form">
-                                    <form id="displayMemberForm" enctype="multipart/form-data">
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    Image
-                                                </td>
-                                                <td><img src="" id="displayMemberImage" alt="Member Image"></td>
-                                            </tr> 
-                                            <tr>
-                                                <td>
-                                                    Member Name
-                                                </td>
-                                                <td><span id="displayMemberName"></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Join Date
-                                                </td>
-                                                <td><span id="displayJoinDate"></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Membership Package
-                                                </td>
-                                                <td><span id="displayMembershipPackage"></span></td>
-                                            </tr>  
-                                            <tr>
-                                                <td>
-                                                    Phone Number
-                                                </td>
-                                                <td><span id="displayMemberPhone"></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Email
-                                                </td>
-                                                <td><span id="displayMemberEmail"></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Date of Birth
-                                                </td>
-                                                <td><span id="displayMemberAge"></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Address
-                                                </td>
-                                                <td><span id="displayMemberAddress"></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Gender
-                                                </td>
-                                                <td><span id="displayMemberGender"></span></td>
-                                            </tr> 
-                                        </table>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>   
-
-                    
-
-                            <!--=================  POP RENEW MODAL  =======================-->
-                        <div id="renew-package" class="modal">
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <div class="modal-form">
-                                    <form action="renew.php?id_new=<?php echo $id; ?>" method="post">
-                                        <table>
-                                            <tr>
-                                                <td>MEMBER NAME:</td>
-                                                <td><input type="text" name="memberName" value="<?php echo $row['memberName'] ?>"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Membership Package</td>
-                                                <td>
-                                                    <select id="membershipPackage" name="membershipPackage">
-                                                        <option>demo</option>
-                                                        <option>demo1</option>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                <input  class="btn btn-outline" type="submit" name="update" value="update">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-            
-                        
-
+                    </div>
                     <div class="box-body">
-                            <table id="display-table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Join Date</th>
-                                        <th>Membership</th>
-                                        <th>Package</th>
-                                    </tr>    
-                                </thead>
-
-                                <!--DATABASE CONNECTION AND QUERY FOR DISPLAYING MEMBER DATA-->
+                        <table id="display-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Join Date</th>
+                                    <th>Package Name</th>
+                                    <th>Expiry Date</th>
+                                    <th>Days Left</th>
+                                </tr>    
+                            </thead>
+                            <tbody>
                                 <?php
                                     $con = new mysqli("localhost", "root", "", "horizon_gym");
                                     if (mysqli_connect_error()) {
                                         die("Connection failed: " . mysqli_connect_error());
                                     } 
-                                    $query="SELECT `memberId`, `memberImage`, `memberName`, `membershipPackage`, `joinDate` FROM `member_details`";
-                                    $result=mysqli_query($con,$query);
-                                    if(!$result)
-                                        die("query failed".mysqli_error());
-                                    else{
-                                        while($row=mysqli_fetch_assoc($result))
-                                        {
+                                    $currentDate = date('Y-m-d');
 
+                                    // Construct the query to fetch members whose expiry date is within 5 days or less
+                                    $query = "SELECT m.`memberId`, m.`memberImage`, m.`memberName`, m.`joinDate`, p.`package_name` AS `packageName`, m.`packageExpiry`
+                                              FROM `member_details` AS m
+                                              INNER JOIN `package_details` AS p ON m.`membershipPackage` = p.`package_name`
+                                              WHERE DATEDIFF(m.`packageExpiry`, '$currentDate') <= 5";
+                                    $result = mysqli_query($con, $query);
+                                    if ($result) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $expiryDate = new DateTime($row['packageExpiry']);
+                                            $diff = $expiryDate->diff(new DateTime($currentDate));
+                                            $daysLeft = $diff->days;
                                 ?>  
-                                <tbody>
-                                    <tr>
-                                        <td><?php echo $row['memberId']; ?></td>
-                                        <td>
-                                        
-                                            <td><img src='"<?= $row['memberImage']; ?>"' height="25" width="25"></td> <!-- Update the image path accordingly -->
-                                        
-                                        </td>
-                                        <td><?php echo $row['memberName']; ?></td>
-                                        <td><?php echo $row['joinDate']; ?></td>
-                                        <td><?php echo $row['membershipPackage']; ?></td>
-                                        <!-- <td>
-                                            <div class="table-button">
-                                            <button class="green-button btn btn-outline" id="renew-package-button"><a href="renew.php?id=<?php echo $row['memberId']; ?>">Renew</a></button>
-                                                <button class="red-button btn btn-outline"><a href="delete.php?id=<?php echo $row['memberId']; ?>"><i class='bx bxs-user-minus'></i></a></button>
-                                                <button class="blue-button btn btn-outline" id="show-data-button"><a href="display.php?id=<?php echo $row['memberId']; ?>"><i class='bx bx-id-card'></i></a></button> 
-                                            </div>
-                                        </td> -->
-                                    </tr>
-                                </tbody>
+                                <tr>
+                                    <td><?php echo $row['memberId']; ?></td>
+                                    <td><img src="uploads/<?= $row['memberImage']; ?>" height="25" width="25"></td>
+                                    <td><?php echo $row['memberName']; ?></td>
+                                    <td><?php echo $row['joinDate']; ?></td>
+                                    <td><?php echo $row['packageName']; ?></td>
+                                    <td><?php echo $row['packageExpiry']; ?></td>
+                                    <td><?php echo $daysLeft ?></td>
+                                </tr>
                                 <?php
                                         }
+                                    } else {
+                                        echo "Query failed: " . mysqli_error($con);
                                     }
-                                    ?>
-                            </table>
-                        </div>                            
-                    </div>
-                    <!-- END OF MEMBERS TABLE -->
+                                    mysqli_close($con);
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>                            
                 </div>
+                <!-- END OF MEMBERS TABLE -->
             </div>
-        </div> 
-    </Section>
+        </div>
+    </div>
+    <!-- Modal for displaying success or error messages -->
+<div class="modal" id="messageModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</Section>
+
     <!--======= END OF REMINDER =======-->
 
     
@@ -978,40 +855,38 @@
     </script>
     <script>
        document.addEventListener('DOMContentLoaded', function() {
-    // Get the send button element
     const sendButton = document.querySelector('.send');
 
-    // Add click event listener to the send button
     sendButton.addEventListener('click', function() {
-        // Get the content from the text-input div
+        // Perform AJAX request to send email
         const messageContent = document.getElementById('text-input').innerHTML;
 
-        // Send an AJAX request to the PHP mailer script
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'email_index.php');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-        // Prepare the data to be sent
-        const data = 'message=' + encodeURIComponent(messageContent);
-
-        // Handle the response from the server
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                // Display a success modal
+        // Example AJAX request using Fetch API
+        fetch('email_index.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'message=' + encodeURIComponent(messageContent)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Show success modal
                 const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-                successModal.show(); // Show the success modal
+                successModal.show();
             } else {
-                // Display an error modal (if needed)
-                console.log('Message could not be sent. Please try again later.');
+                console.error('Failed to send message.');
             }
-        };
-
-        // Send the request with the message content
-        xhr.send(data);
+        })
+        .catch(error => {
+            console.error('Error sending message:', error);
+        });
     });
 });
 
+
     </script>
+    
 
 </body>
 

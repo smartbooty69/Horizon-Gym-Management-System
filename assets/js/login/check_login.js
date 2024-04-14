@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("login-form").addEventListener("submit", function(event) {
       event.preventDefault();
-
       var usernameInput = document.getElementById("username");//get all the values from form
       var passwordInput = document.getElementById("password");
       var errorMessage = document.getElementById("error-message");
@@ -15,13 +14,14 @@ document.addEventListener("DOMContentLoaded", function() {
               .then(response => response.json())
               .then(data => {
                   var userIPAddress = data.ip;
-
+                    
                   if (username === "admin" && password === "admin") {
-                      if (userIPAddress === "157.50.25.50") { //https://api.ipify.org?format=json go to this and replace the ip adress
+                      if (userIPAddress === "157.50.52.64") { //https://api.ipify.org?format=json go to this and replace the ip adress
                           // Redirect to the desired page after successful login
-                          window.location.href = "dashboard.html";
+                          window.location.href = "dashboard.php";
                       } else {
                           // Display error message below the submit button
+                          alert(userIPAddress);
                           errorMessage.textContent = "Access denied. Invalid IP address.";
                       }
                   } else {

@@ -153,11 +153,29 @@
             }
 
         </style>
+        <script>
+        // Function to redirect to dashboard.html
+        function redirectToDashboard() {
+            window.location.href = "dashboard.php";
+        }
+        
+        // Wait for the document to be fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Find the div element by its ID
+            var redirectDiv = document.getElementById("close");
+
+            // Add a click event listener to the div
+            redirectDiv.addEventListener("click", function() {
+                // Call the function to redirect to dashboard.html
+                redirectToDashboard();
+            });
+        });
+    </script>
     </head>
 <body>
-<div class="modal">
+<div class="modal" id="modal_div">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <a href="dashboard.php" style="text-decoration:none;"><b><span Id="close" class="close">&times;</span></b></a>
         <form method="POST" action="renew.php?id_new=<?php echo $row['memberId']; ?>">
             <table>
                 <th colspan="2">

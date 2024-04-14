@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2024 at 07:58 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Apr 14, 2024 at 01:08 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,15 +37,19 @@ CREATE TABLE `member_details` (
   `memberAddress` varchar(255) NOT NULL,
   `memberGender` varchar(10) NOT NULL,
   `joinDate` date NOT NULL,
-  `memberAge` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `memberAge` int(11) NOT NULL,
+  `packageExpiry` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `member_details`
 --
 
-INSERT INTO `member_details` (`memberId`, `memberImage`, `memberName`, `membershipPackage`, `memberPhone`, `memberEmail`, `memberAddress`, `memberGender`, `joinDate`, `memberAge`) VALUES
-(89, 0x53637265656e73686f7420323032332d30392d3137203132343333372e706e67, 'sa', 'silver', 121323, 's@gamil.com', 'saw', 'male', '2024-04-09', '2022-02-09');
+INSERT INTO `member_details` (`memberId`, `memberImage`, `memberName`, `membershipPackage`, `memberPhone`, `memberEmail`, `memberAddress`, `memberGender`, `joinDate`, `memberAge`, `packageExpiry`) VALUES
+(105, 0x53637265656e73686f7420323032342d30332d3234203138323433332e706e67, 'samuel hanok anchan', 'SILVER', 2147483647, 'samuelhanok0@gmail.com', 'mangalore', 'male', '2024-04-14', 21, '2024-07-14'),
+(106, 0x53637265656e73686f7420323032342d30332d3234203138323433332e706e67, 'clancy m', 'BRONZE', 2147483647, 'samuelhanok0@gmail.com', 'mangalore', 'female', '2024-03-12', 24, '2024-04-12'),
+(107, 0x53637265656e73686f7420323032342d30332d3234203138323433332e706e67, 'sharan', 'SILVER', 2147483647, 'samuelhanok0@gmail.com', 'mangalore', 'other', '2024-01-13', 34, '2024-04-13'),
+(110, 0x53637265656e73686f7420323032332d30392d3137203132343333372e706e67, 'sharan', 'BRONZE', 866003542, 'samuelhanok0@gmail.com', 'mangalore', 'male', '2024-04-11', 0, '2024-05-11');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +69,7 @@ ALTER TABLE `member_details`
 -- AUTO_INCREMENT for table `member_details`
 --
 ALTER TABLE `member_details`
-  MODIFY `memberId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `memberId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
