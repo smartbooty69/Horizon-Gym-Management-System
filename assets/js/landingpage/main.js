@@ -65,8 +65,8 @@ window.addEventListener('scroll', scrollUp)
 const sr = ScrollReveal({
     origin: 'top',
     distance: '60px',
-    duration: 2500,
-    delay: 200
+    duration: 1250,
+    delay: 100
 })
 
 sr.reveal(`.home__data, .footer__container, .footer__group`)
