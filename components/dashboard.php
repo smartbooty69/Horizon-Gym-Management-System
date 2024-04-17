@@ -894,14 +894,12 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: 'message=' + encodeURIComponent(messageContent)
         })
-        .then(response => response.json()) // Parse response as JSON
-        .then(data => {
-            if (data.success) {
+        .then(response => {
+            if (response.ok) {
                 // Show success modal
-                showSuccessModal(data.message);
+                showSuccessModal();
             } else {
-                // Show error modal
-                showErrorModal(data.message);
+                console.error('Failed to send reminder emails.');
             }
         })
         .catch(error => {
@@ -910,23 +908,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Function to show success modal
-    function showSuccessModal(message) {
-        document.getElementById('modalTitle').textContent = 'Success';
-        document.getElementById('modalBody').textContent = message;
-        const successModal = new bootstrap.Modal(document.getElementById('messageModal'));
+    function showSuccessModal() {
+        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
         successModal.show();
     }
-
-    // Function to show error modal
-    function showErrorModal(message) {
-        document.getElementById('modalTitle').textContent = 'Error';
-        document.getElementById('modalBody').textContent = message;
-        const errorModal = new bootstrap.Modal(document.getElementById('messageModal'));
-        errorModal.show();
-    }
 });
-
-
 
     </script>
     
