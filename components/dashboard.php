@@ -474,23 +474,22 @@
            
     <Section id="package" class="hidden">
       
-        <?php
+       
+        
+        <div class="card-box">
+            <div class="card package-card" id="package-card-id">
+                <?php
                     $con = new mysqli("localhost", "root", "", "horizon_gym");
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
-                    $query="SELECT * FROM `package_details`";
+                    $query="SELECT * FROM `package_details` WHERE packageid=1";
                     $result=mysqli_query($con,$query);
-                    if(!$result)
+                    if(!$result){
                         die("query failed".mysqli_error());
-                    else{
-                        while($row=mysqli_fetch_assoc($result))
-                        {
-        ?>
-        
-        <div class="card-box">
-            <div class="card package-card" id="package-card-id">
-
+                    }else{
+                        $row=mysqli_fetch_assoc($result);
+                ?>
                 <div class="card-body">  
                     <table class="package-data-display">
                         <tr>
@@ -507,37 +506,131 @@
                         </tr>
                     </table>
                     <div class="card-btn-container">
-                        <button class="btn btn-outline" id="card-edit-btn" data-target="edit-package">Edit</button>
+                    <button class="btn btn-outline all-card-edit-button" data-target="edit-package">Edit</button>
                     </div>
-                </div>
+                </div><?php
+                    }
+                    
+                ?>
             </div> 
         </div>
-        
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Get the button element by its ID
-                const editButton = document.getElementById('card-edit-btn');
-
-                // Add a click event listener to the button
-                editButton.addEventListener('click', function() {
-                    // Get the target section element by its ID
-                    const modalId = editButton.getAttribute('data-target');
-                    const targetModal = document.getElementById(modalId);
-
-                    // Show the modal if it exists
-                    if (targetModal) {
-                        targetModal.style.display = 'block'; // Display the modal
-                    }
-                });
-            });
-        </script>
+        <div class="card-box">
+            <div class="card package-card" id="package-card-id">
                 <?php
-                        }
-                    }
+                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                    if (mysqli_connect_error()) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    } 
+                    $query="SELECT * FROM `package_details` WHERE packageid=2";
+                    $result=mysqli_query($con,$query);
+                    if(!$result){
+                        die("query failed".mysqli_error());
+                    }else{
+                        $row=mysqli_fetch_assoc($result);
                 ?>
-        
-        
+                <div class="card-body">  
+                    <table class="package-data-display">
+                        <tr>
+                            <td><strong>Package Name:</strong></td>
+                            <td><?php echo $row['package_name']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price:</strong></td>
+                            <td><?php echo $row['package_price']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duration:</strong></td>
+                            <td><?php echo $row['package_duration']; ?></td>
+                        </tr>
+                    </table>
+                    <div class="card-btn-container">
+                    <button class="btn btn-outline all-card-edit-button" data-target="edit-package">Edit</button>
+                    </div>
+                </div><?php
+                    }
+                    
+                ?>
+            </div> 
+        </div>
+        <div class="card-box">
+            <div class="card package-card" id="package-card-id">
+                <?php
+                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                    if (mysqli_connect_error()) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    } 
+                    $query="SELECT * FROM `package_details` WHERE packageid=3";
+                    $result=mysqli_query($con,$query);
+                    if(!$result){
+                        die("query failed".mysqli_error());
+                    }else{
+                        $row=mysqli_fetch_assoc($result);
+                ?>
+                <div class="card-body">  
+                    <table class="package-data-display">
+                        <tr>
+                            <td><strong>Package Name:</strong></td>
+                            <td><?php echo $row['package_name']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price:</strong></td>
+                            <td><?php echo $row['package_price']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duration:</strong></td>
+                            <td><?php echo $row['package_duration']; ?></td>
+                        </tr>
+                    </table>
+                    <div class="card-btn-container">
+                    <button class="btn btn-outline all-card-edit-button" data-target="edit-package">Edit</button>
+                    </div>
+                </div><?php
+                    }
+                    
+                ?>
+            </div> 
+        </div>
+        <div class="card-box">
+            <div class="card package-card" id="package-card-id">
+                <?php
+                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                    if (mysqli_connect_error()) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    } 
+                    $query="SELECT * FROM `package_details` WHERE packageid=4";
+                    $result=mysqli_query($con,$query);
+                    if(!$result){
+                        die("query failed".mysqli_error());
+                    }else{
+                        $row=mysqli_fetch_assoc($result);
+                ?>
+                <div class="card-body">  
+                    <table class="package-data-display">
+                        <tr>
+                            <td><strong>Package Name:</strong></td>
+                            <td><?php echo $row['package_name']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price:</strong></td>
+                            <td><?php echo $row['package_price']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duration:</strong></td>
+                            <td><?php echo $row['package_duration']; ?></td>
+                        </tr>
+                    </table>
+                    <div class="card-btn-container">
+                    <button class="btn btn-outline all-card-edit-button" data-target="edit-package">Edit</button>
 
+                    </div>
+                </div>
+                <?php
+                    }
+                    
+                ?>
+            </div> 
+        </div>
+    
                                 <!-- The EDIT PACKAGE MODAL -->
             <div id="edit-package" class="modal">
                 <!-- Modal content -->
@@ -573,24 +666,48 @@
                     </div>
                 </div>
             </div>
-            <script>
-        // Function to redirect to dashboard.html
-        function redirectToDashboard() {
-            window.location.href = "dashboard.php";
-        }
-        
-        // Wait for the document to be fully loaded
-        document.addEventListener("DOMContentLoaded", function() {
-            // Find the div element by its ID
-            var redirectDiv = document.getElementById("close-package-edit");
+            
 
-            // Add a click event listener to the div
-            redirectDiv.addEventListener("click", function() {
-                // Call the function to redirect to dashboard.html
-                redirectToDashboard();
-            });
-        });
-    </script>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    // This function opens the modal
+                    function openModal() {
+                        var modal = document.getElementById('edit-package');
+                        modal.style.display = "block";
+                    }
+
+                    // This function closes the modal
+                    function closeModal() {
+                        var modal = document.getElementById('edit-package');
+                        modal.style.display = "none";
+                    }
+
+                    // Get all edit buttons and attach the open modal event
+                    var editButtons = document.querySelectorAll('.all-card-edit-button');
+                    editButtons.forEach(function(button) {
+                        button.addEventListener('click', function() {
+                            openModal();
+                        });
+                    });
+
+                    // Get the close button and attach the close modal event
+                    var closeButton = document.getElementById('close-package-edit');
+                    closeButton.addEventListener('click', function() {
+                        closeModal();
+                    });
+
+                    // Close the modal if clicked outside of the modal content
+                    window.onclick = function(event) {
+                        var modal = document.getElementById('edit-package');
+                        if (event.target == modal) {
+                            closeModal();
+                        }
+                    }
+                });
+            </script>
+
+            
             
     </Section>
 

@@ -422,36 +422,6 @@ document.getElementById('all-btn').addEventListener('click', function() {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  var editPackageModal = document.getElementById("edit-package");
-  var editPackageBtns = document.querySelectorAll(".card-btn-container #card-edit-btn");
-  var editPackageCloseSpan = editPackageModal.querySelector(".close");
-
-  // Function to open the edit package modal
-  function openEditPackageModal() {
-      editPackageModal.style.display = "block";
-  }
-
-  // Function to close the edit package modal
-  function closeEditPackageModal() {
-      editPackageModal.style.display = "none";
-  }
-
-  // Event listener for each edit button
-  editPackageBtns.forEach(function(btn) {
-      btn.addEventListener("click", openEditPackageModal);
-  });
-
-  // Event listener for closing the modal using the close button
-  editPackageCloseSpan.onclick = closeEditPackageModal;
-
-  // Event listener for closing the modal by clicking anywhere outside it
-  window.onclick = function(event) {
-      if (event.target == editPackageModal) {
-          closeEditPackageModal();
-      }
-  }
-});
 
 
 
