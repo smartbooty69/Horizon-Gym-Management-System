@@ -797,7 +797,7 @@
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
-                    $query="SELECT * FROM `package_details` WHERE packageid=4";
+                    $query="SELECT * FROM `package_details` WHERE packageid=5";
                     $result=mysqli_query($con,$query);
                     if(!$result){
                         die("query failed".mysqli_error());
@@ -859,7 +859,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit5">Submit</button></td>
                                 </tr>
                             </table>
                         </form>
@@ -874,7 +874,7 @@
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
-                    $query="SELECT * FROM `package_details` WHERE packageid=4";
+                    $query="SELECT * FROM `package_details` WHERE packageid=6";
                     $result=mysqli_query($con,$query);
                     if(!$result){
                         die("query failed".mysqli_error());
@@ -936,7 +936,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit6">Submit</button></td>
                                 </tr>
                             </table>
                         </form>
@@ -951,7 +951,7 @@
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
-                    $query="SELECT * FROM `package_details` WHERE packageid=4";
+                    $query="SELECT * FROM `package_details` WHERE packageid=7";
                     $result=mysqli_query($con,$query);
                     if(!$result){
                         die("query failed".mysqli_error());
@@ -1013,7 +1013,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit7">Submit</button></td>
                                 </tr>
                             </table>
                         </form>
@@ -1028,7 +1028,7 @@
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
-                    $query="SELECT * FROM `package_details` WHERE packageid=4";
+                    $query="SELECT * FROM `package_details` WHERE packageid=8";
                     $result=mysqli_query($con,$query);
                     if(!$result){
                         die("query failed".mysqli_error());
@@ -1090,7 +1090,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit8">Submit</button></td>
                                 </tr>
                             </table>
                         </form>
@@ -1105,7 +1105,7 @@
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
-                    $query="SELECT * FROM `package_details` WHERE packageid=4";
+                    $query="SELECT * FROM `package_details` WHERE packageid=9";
                     $result=mysqli_query($con,$query);
                     if(!$result){
                         die("query failed".mysqli_error());
@@ -1167,7 +1167,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit9">Submit</button></td>
                                 </tr>
                             </table>
                         </form>
