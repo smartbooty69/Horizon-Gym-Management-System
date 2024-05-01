@@ -545,7 +545,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit1">Submit</button></td>
                                 </tr>
                             </table>
                         </form>
@@ -624,7 +624,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit2">Submit</button></td>
                                 </tr>
                             </table>
                         </form>
@@ -702,7 +702,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit3">Submit</button></td>
                                 </tr>
                             </table>
                         </form>
@@ -782,7 +782,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit4">Submit</button></td>
                                 </tr>
                             </table>
                         </form>
