@@ -477,7 +477,7 @@
        
         
         <div class="card-box">
-            <div class="card package-card" id="package-card-id">
+            <div class="card package-card" id="package-card-id-1">
                 <?php
                     $con = new mysqli("localhost", "root", "", "horizon_gym");
                     if (mysqli_connect_error()) {
@@ -506,7 +506,7 @@
                         </tr>
                     </table>
                     <div class="card-btn-container">
-                    <button class="btn btn-outline all-card-edit-button" data-target="edit-package">Edit</button>
+                    <button class="btn btn-outline all-card-edit-button" id="edit-package-btn-1">Edit</button>
                     </div>
                 </div><?php
                     }
@@ -514,8 +514,51 @@
                 ?>
             </div> 
         </div>
+
+
+
+            <!-- The EDIT PACKAGE MODAL -->
+            <div id="edit-package-modal-1" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" id="close-package-edit">&times;</span>
+                    <div class="modal-form">
+                        <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
+                            <table>
+                                <tr>
+                                    <td>Package Name</td>
+                                    <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
+                                </tr>
+                                <tr>
+                                    <td>Duration</td>
+                                    <td><select id="packageduration" name="packageDuration">
+                                            <option>1 MONTH</option>
+                                            <option>3 MONTHS</option>
+                                            <option>6 MONTHS</option>
+                                            <option>12 MONTHS</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        
         <div class="card-box">
-            <div class="card package-card" id="package-card-id">
+            <div class="card package-card" id="package-card-id-2">
                 <?php
                     $con = new mysqli("localhost", "root", "", "horizon_gym");
                     if (mysqli_connect_error()) {
@@ -544,7 +587,7 @@
                         </tr>
                     </table>
                     <div class="card-btn-container">
-                    <button class="btn btn-outline all-card-edit-button" data-target="edit-package">Edit</button>
+                    <button class="btn btn-outline all-card-edit-button" id="edit-package-btn-2">Edit</button>
                     </div>
                 </div><?php
                     }
@@ -552,8 +595,48 @@
                 ?>
             </div> 
         </div>
+
+                    <!-- The EDIT PACKAGE MODAL -->
+            <div id="edit-package-modal-2" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" id="close-package-edit">&times;</span>
+                    <div class="modal-form">
+                        <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
+                            <table>
+                                <tr>
+                                    <td>Package Name</td>
+                                    <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
+                                </tr>
+                                <tr>
+                                    <td>Duration</td>
+                                    <td><select id="packageduration" name="packageDuration">
+                                            <option>1 MONTH</option>
+                                            <option>3 MONTHS</option>
+                                            <option>6 MONTHS</option>
+                                            <option>12 MONTHS</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+        
         <div class="card-box">
-            <div class="card package-card" id="package-card-id">
+            <div class="card package-card" id="package-card-id-3">
                 <?php
                     $con = new mysqli("localhost", "root", "", "horizon_gym");
                     if (mysqli_connect_error()) {
@@ -582,7 +665,7 @@
                         </tr>
                     </table>
                     <div class="card-btn-container">
-                    <button class="btn btn-outline all-card-edit-button" data-target="edit-package">Edit</button>
+                    <button class="btn btn-outline all-card-edit-button" id="edit-package-btn-3">Edit</button>
                     </div>
                 </div><?php
                     }
@@ -590,8 +673,48 @@
                 ?>
             </div> 
         </div>
+
+                    <!-- The EDIT PACKAGE MODAL -->
+            <div id="edit-package-modal-3" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" id="close-package-edit">&times;</span>
+                    <div class="modal-form">
+                        <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
+                            <table>
+                                <tr>
+                                    <td>Package Name</td>
+                                    <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
+                                </tr>
+                                <tr>
+                                    <td>Duration</td>
+                                    <td><select id="packageduration" name="packageDuration">
+                                            <option>1 MONTH</option>
+                                            <option>3 MONTHS</option>
+                                            <option>6 MONTHS</option>
+                                            <option>12 MONTHS</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+        
         <div class="card-box">
-            <div class="card package-card" id="package-card-id">
+            <div class="card package-card" id="package-card-id-4">
                 <?php
                     $con = new mysqli("localhost", "root", "", "horizon_gym");
                     if (mysqli_connect_error()) {
@@ -620,7 +743,7 @@
                         </tr>
                     </table>
                     <div class="card-btn-container">
-                    <button class="btn btn-outline all-card-edit-button" data-target="edit-package">Edit</button>
+                    <button class="btn btn-outline all-card-edit-button" id="edit-package-btn-4">Edit</button>
 
                     </div>
                 </div>
@@ -632,7 +755,7 @@
         </div>
     
                                 <!-- The EDIT PACKAGE MODAL -->
-            <div id="edit-package" class="modal">
+            <div id="edit-package-modal-4" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close" id="close-package-edit">&times;</span>
@@ -670,42 +793,41 @@
 
 
             <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    // This function opens the modal
-                    function openModal() {
-                        var modal = document.getElementById('edit-package');
-                        modal.style.display = "block";
-                    }
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to set up modal interactions
+        function setupModal(buttonId, modalId) {
+            var editButton = document.getElementById(buttonId);
+            var modal = document.getElementById(modalId);
+            var closeButton = modal.querySelector('.close');  // Corrected selector here
 
-                    // This function closes the modal
-                    function closeModal() {
-                        var modal = document.getElementById('edit-package');
-                        modal.style.display = "none";
-                    }
+            // Show modal
+            editButton.onclick = function() {
+                modal.style.display = 'block';
+            };
 
-                    // Get all edit buttons and attach the open modal event
-                    var editButtons = document.querySelectorAll('.all-card-edit-button');
-                    editButtons.forEach(function(button) {
-                        button.addEventListener('click', function() {
-                            openModal();
-                        });
-                    });
+            // Close modal with close button
+            closeButton.onclick = function() {
+                modal.style.display = 'none';
+            };
 
-                    // Get the close button and attach the close modal event
-                    var closeButton = document.getElementById('close-package-edit');
-                    closeButton.addEventListener('click', function() {
-                        closeModal();
-                    });
+            // Close modal by clicking outside it
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        }
 
-                    // Close the modal if clicked outside of the modal content
-                    window.onclick = function(event) {
-                        var modal = document.getElementById('edit-package');
-                        if (event.target == modal) {
-                            closeModal();
-                        }
-                    }
-                });
-            </script>
+        // Set up each modal interaction
+        setupModal('edit-package-btn-1', 'edit-package-modal-1');
+        setupModal('edit-package-btn-2', 'edit-package-modal-2');
+        setupModal('edit-package-btn-3', 'edit-package-modal-3');
+        setupModal('edit-package-btn-4', 'edit-package-modal-4');
+    });
+
+</script>
+
+
 
             
             
