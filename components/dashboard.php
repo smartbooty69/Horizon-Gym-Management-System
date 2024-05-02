@@ -66,55 +66,7 @@
         color:#28292a;
        }
     </style>
-    <style>
-    /* Popup container */
-.form-popup1 {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid #f1f1f1;
-    z-index: 9;
-    background-color: #fefefe;
-    padding: 20px;
-    max-width: 300px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Full-width input fields */
-.form-popup1 input[type=text] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0 15px 0;
-    border: 1px solid #ccc;
-}
-
-/* Buttons */
-.form-popup1 .btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 18px;
-    border: none;
-    cursor: pointer;
-    margin-right: 5px;
-    float: right;
-}
-
-.form-popup1 .btn.cancel {
-    background-color: #ccc;
-    float: right;
-}
-
-/* Clear floats */
-.form-popup1::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-    </style>
-
+    
 
 
 </head>
@@ -203,7 +155,298 @@
     
 
         <!--======= DASHBOARD SECTION =======-->
-        
+        <Section id= "member"> 
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-3 col-md-6 col-sm-12">
+                        <div class="box box-hover">
+                            <!-- COUNTER -->
+                            <div class="counter">
+                                <div class="counter-title">
+                                    Total Members
+                                </div>
+                                <div class="counter-info">
+                                    <div class="counter-count">
+                                        <!-- Member count will be dynamically updated here -->
+                                    </div>
+                                    <i class='bx bxs-group'></i>
+                                </div>
+                            </div>
+                            <!-- END COUNTER -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3 col-md-6 col-sm-12">
+                    </div>
+                    <div class="col-12">
+                        <!-- ORDERS TABLE -->
+                        <div class="box">
+                            <!-- BOX HEADER -->
+                            <div class="box-header">
+                                Members 
+                                <div class="box-header-right">
+                                    <!-- Search input field -->
+                                    <!-- <div class="box-header-search">
+                                        <input type="text" id="searchInput" placeholder="Search members..." class="search-input"> 
+                                    </div> -->
+                                    <!-- <div class="box-header-filter"> -->
+                                        <!-- Add member button -->
+                                        <!-- <button class="btn btn-outline" id="exp-btn">Expiring</button>
+                                    </div>
+                                    <div class="box-header-filter"> -->
+                                        <!-- Add member button -->
+                                        <!-- <button class="btn btn-outline" id="all-btn">All</button>
+                                    </div> -->
+                                <!-- Add member button -->
+                                    <div class="box-header-button">
+                                        <button class="btn btn-outline" id="myBtn">Add Member</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--PHP CODE TO DISPLAY PACKAGE IN SELECT BUTTON-->
+                            <?php
+                                        $con = new mysqli("localhost", "root", "", "horizon_gym");
+                                        if (mysqli_connect_error()) {
+                                            die("Connection failed: " . mysqli_connect_error());
+                                        } 
+                                        $query="SELECT `package_name` FROM `package_details`";
+                                        $result=mysqli_query($con,$query);
+                                        if(!$result)
+                                            die("query failed".mysqli_error());
+
+                            ?>  
+
+                            <!-- The Modal ADD -->
+                            <div id="add-members" class="modal">
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <div class="modal-form">
+                                        <form id="addMemberForm" enctype="multipart/form-data"  method="POST" action="add_member.php">
+                                            <table>
+                                                <tr>
+                                                    <td>Image</td>
+                                                    <td><input type="file" id="memberImage" name="memberImage"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Member Name</td>
+                                                    <td><input type="text" id="memberName" name="memberName" placeholder="Member Name"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Join Date</td>
+                                                    <td><input type="date" id="joinDate" name="joinDate"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Membership Package</td>
+                                                    <td><select id="membershipPackage" name="membershipPackage">
+                                                    <?php
+                                                         while($row=mysqli_fetch_assoc($result))
+                                                        {
+                                                    ?>
+                                                            <option><?php echo $row['package_name']; ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Phone Number</td>
+                                                    <td><input type="text" id="memberPhone" name="memberPhone" placeholder="Phone"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email</td>
+                                                    <td><input type="email" id="memberEmail" name="memberEmail" placeholder="Email"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date of Birth</td>
+                                                    <td><input type="date" id="memberAge" name="dateOfBirth" placeholder="Age"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Address</td>
+                                                    <td><input type="text" id="memberAddress" name="memberAddress" placeholder="Address"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Gender</td>
+                                                    <td><select id="memberGender" name="memberGender">
+                                                            <option value="male">Male</option>
+                                                            <option value="female">Female</option>
+                                                            <option value="other">Other</option>
+                                                        </select></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><button class="btn btn-outline" type="submit" name="submit">Submit</button></td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+                            <!-- The Modal DISPAY -->
+                            <!-- <div id="full-member-detail" class="modal">
+                                
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <div class="modal-form">
+                                        <form id="displayMemberForm" enctype="multipart/form-data">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        Image
+                                                    </td>
+                                                    <td><img src="" id="displayMemberImage" alt="Member Image"></td>
+                                                </tr> 
+                                                <tr>
+                                                    <td>
+                                                        Member Name
+                                                    </td>
+                                                    <td><span id="displayMemberName"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Join Date
+                                                    </td>
+                                                    <td><span id="displayJoinDate"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Membership Package
+                                                    </td>
+                                                    <td><span id="displayMembershipPackage"></span></td>
+                                                </tr>  
+                                                <tr>
+                                                    <td>
+                                                        Phone Number
+                                                    </td>
+                                                    <td><span id="displayMemberPhone"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Email
+                                                    </td>
+                                                    <td><span id="displayMemberEmail"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Date of Birth
+                                                    </td>
+                                                    <td><span id="displayMemberAge"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Address
+                                                    </td>
+                                                    <td><span id="displayMemberAddress"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Gender
+                                                    </td>
+                                                    <td><span id="displayMemberGender"></span></td>
+                                                </tr> 
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>    -->
+
+                           
+
+                                 <!--=================  POP RENEW MODAL  =======================-->
+                            <!-- <div id="renew-package" class="modal">
+                                
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <div class="modal-form">
+                                        <form action="renew.php?id_new="></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Membership Package</td>
+                                                    <td>
+                                                        <select id="membershipPackage" name="membershipPackage">
+                                                            <option>demo</option>
+                                                            <option>demo1</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                    <input  class="btn btn-outline" type="submit" name="update" value="update">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>                         -->
+                                       
+
+                           <div class="box-body">
+                                <table id="display-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Join Date</th>
+                                            <th>Membership</th>
+                                        </tr>    
+                                    </thead>
+
+                                     <!--DATABASE CONNECTION AND QUERY FOR DISPLAYING MEMBER DATA-->
+                                    <?php
+                                        $con = new mysqli("localhost", "root", "", "horizon_gym");
+                                        if (mysqli_connect_error()) {
+                                            die("Connection failed: " . mysqli_connect_error());
+                                        } 
+                                        $query="SELECT `memberId`, `memberImage`, `memberName`, `membershipPackage`, `joinDate` FROM `member_details`";
+                                        $result=mysqli_query($con,$query);
+                                        if(!$result)
+                                            die("query failed".mysqli_error());
+                                        else{
+                                            while($row=mysqli_fetch_assoc($result))
+                                            {
+
+                                     ?>  
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $row['memberId']; ?></td>
+                                            <!-- <td> -->
+                                              
+                                                <td><img src="uploads/<?= $row['memberImage']; ?>" height="25" width="25"></td> <!-- Update the image path accordingly -->
+                                               
+                                            <!-- </td> -->
+                                            <td><?php echo $row['memberName']; ?></td>
+                                            <td><?php echo $row['joinDate']; ?></td>
+                                            <td><?php echo $row['membershipPackage']; ?></td>
+                                            <td>
+                                                <div class="table-button">
+                                                   <button class="green-button btn btn-outline" id="renew-package-button"><a href="renew.php?id=<?php echo $row['memberId']; ?>">Renew</a></button>
+                                                    <button class="red-button btn btn-outline"><a href="delete.php?id=<?php echo $row['memberId']; ?>"><i class='bx bxs-user-minus'></i></a></button>
+                                                    <button class="blue-button btn btn-outline" id="show-data-button"><a href="display.php?id=<?php echo $row['memberId']; ?>"><i class='bx bx-id-card'></i></a></button> <!-- Added a class for easier selection -->
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <?php
+                                            }
+                                        }
+                                        ?>
+                                </table>
+                            </div>                            
+                        </div>
+                        <!-- END OF MEMBERS TABLE -->
+                    </div>
+                </div>
+            </div>
+            
+        </Section>
         
         <!--======= END OF DASHBOARD =======-->
 
@@ -228,28 +471,19 @@
 
 
     <!--======= PACKAGE SECTION =======-->
-<<<<<<< Updated upstream
            
     <Section id="package" class="hidden">
       
        
         
         <div class="card-box">
-=======
-    <section id="analytic" class="hidden">
-    <div class="card-box">
->>>>>>> Stashed changes
             <div class="card package-card" id="package-card-id-1">
                 <?php
                     $con = new mysqli("localhost", "root", "", "horizon_gym");
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
-<<<<<<< Updated upstream
                     $query="SELECT * FROM `package_details` WHERE packageid=1";
-=======
-                    $query="SELECT * FROM package_details WHERE packageid=1";
->>>>>>> Stashed changes
                     $result=mysqli_query($con,$query);
                     if(!$result){
                         die("query failed".mysqli_error());
@@ -278,7 +512,6 @@
                     }
                     
                 ?>
-<<<<<<< Updated upstream
             </div> 
         </div>
 
@@ -990,7 +1223,6 @@
             
     </Section>
 
- 
     <!--======= END OF PACKAGE =======-->
    
     
@@ -1075,21 +1307,20 @@
         </div>
     </div>
     <!-- Modal for displaying success or error messages -->
-    <div class="modal" id="messageModal" style="display: none; position: fixed; z-index: 1050; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-    <div class="modal-dialog" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); max-width: 80%; width: 400px;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitle"></h5>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
-            <div class="modal-footer">
-                <a href="dashboard.php"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></a>
+    <div class="modal" id="messageModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="modalBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
 </Section>
 
 
