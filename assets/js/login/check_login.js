@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     
                   if (username === "admin" && password === "admin") {
                       if (userIPAddress === "152.58.208.14") { //https://api.ipify.org?format=json go to this and replace the ip adress
+
                           // Redirect to the desired page after successful login
                           window.location.href = "dashboard.php";
                       } else {
