@@ -16,13 +16,17 @@ document.addEventListener("DOMContentLoaded", function() {
                   var userIPAddress = data.ip;
                     
                   if (username === "admin" && password === "admin") {
+<<<<<<< HEAD
                       if (userIPAddress === "152.58.208.14") { //https://api.ipify.org?format=json go to this and replace the ip adress
 
+=======
+                      if (userIPAddress === "157.50.52.64") { //https://api.ipify.org?format=json go to this and replace the ip adress
+>>>>>>> parent of fc6ed58 (trial)
                           // Redirect to the desired page after successful login
                           window.location.href = "dashboard.php";
                       } else {
                           // Display error message below the submit button
-                         // alert(userIPAddress);
+                          alert(userIPAddress);
                           errorMessage.textContent = "Access denied. Invalid IP address.";
                       }
                   } else {

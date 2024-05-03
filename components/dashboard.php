@@ -65,6 +65,9 @@
         background-color: skyblue;
         color:#28292a;
        }
+       .box101{
+        margin-left:300px;
+       }
     </style>
     
 
@@ -853,7 +856,7 @@
             </div>
             <div class="col-12">
                 <!-- ORDERS TABLE -->
-                <div class="box">
+                <div class="box101">
                     <!-- BOX HEADER -->
                     <div class="box-header">
                         Members 
@@ -890,13 +893,12 @@
                                     $currentDate = date('Y-m-d');
 
                                     // Construct the query to fetch members whose expiry date is within 5 days or less
-                                    $query = "SELECT m.`memberId`, m.`memberImage`, m.`memberName`, m.`joinDate`, p.`package_name` AS `packageName`, m.`packageExpiry`
-                                              FROM `member_details` AS m
-                                              INNER JOIN `package_details` AS p ON m.`membershipPackage` = p.`package_name`
-                                              WHERE DATEDIFF(m.`packageExpiry`, '$currentDate') <= 5";
-                                              
+                                    $query = "SELECT m.memberId, m.memberImage, m.memberName, m.joinDate, p.package_name AS packageName, m.packageExpiry
+                                              FROM member_details AS m
+                                              INNER JOIN package_details AS p ON m.membershipPackage = p.package_name
+                                              WHERE DATEDIFF(m.packageExpiry, '$currentDate') <= 5";
                                     $result = mysqli_query($con, $query);
-                                     if ($result) {
+                                    if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             $expiryDate = new DateTime($row['packageExpiry']);
                                             $diff = $expiryDate->diff(new DateTime($currentDate));
@@ -913,8 +915,7 @@
                                 </tr>
                                 <?php
                                         }
-                                    } 
-                                else {
+                                    } else {
                                         echo "Query failed: " . mysqli_error($con);
                                     }
                                     mysqli_close($con);
