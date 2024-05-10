@@ -16,12 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
                   var userIPAddress = data.ip;
                     
                   if (username === "admin" && password === "admin") {
-<<<<<<< HEAD
-                      if (userIPAddress === "152.58.208.14") { //https://api.ipify.org?format=json go to this and replace the ip adress
 
-=======
-                      if (userIPAddress === "157.50.52.64") { //https://api.ipify.org?format=json go to this and replace the ip adress
->>>>>>> parent of fc6ed58 (trial)
+                      if (userIPAddress === "152.58.209.65") { //https://api.ipify.org?format=json go to this and replace the ip adress
                           // Redirect to the desired page after successful login
                           window.location.href = "dashboard.php";
                       } else {

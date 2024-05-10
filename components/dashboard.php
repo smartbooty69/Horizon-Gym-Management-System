@@ -793,47 +793,7 @@
                 </div>
             </div>
 
-<<<<<<< Updated upstream
          
-=======
-   
-        </div>
-    
-    
-                                <!-- The EDIT PACKAGE MODAL -->
-            <div id="edit-package-modal-9" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close" id="close-package-edit">&times;</span>
-                    <div class="modal-form">
-                        <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
-                            <table>
-                                <tr>
-                                    <td>Package Name</td>
-                                    <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
-                                </tr>
-                                <tr>
-                                    <td>Duration</td>
-                                    <td><select id="packageduration" name="packageDuration">
-                                            <option>1 MONTH</option>
-                                            <option>3 MONTHS</option>
-                                            <option>6 MONTHS</option>
-                                            <option>12 MONTHS</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Price</td>
-                                    <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><button class="btn btn-outline" type="submit" name="submit9">Submit</button></td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
->>>>>>> Stashed changes
                 </div>
             </div>
             

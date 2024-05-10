@@ -57,12 +57,8 @@ if (isset($_POST['message'])) {
 
                 // Set recipient and email body
                 $mail->addAddress($memberEmail, $memberName);
-<<<<<<< HEAD
-
                 $mail->Body = 'Dear ' . $memberName . ',<br><br>' . $messageContent . '<br><br>YOUR MEMBERSHIP IS ABOUT TO EXPIRE<br>Thank you,<br>Horizon Gym';
-=======
                 $mail->Body = 'Dear ' . $memberName . ',<br><br>' . $messageContent . '<br><br>Thank you,<br>Horizon Gym';
->>>>>>> parent of fc6ed58 (trial)
 
 
                 // Send email
