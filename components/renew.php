@@ -190,6 +190,10 @@
                     <td><input type="text" name="memberName" value="<?php echo $row['memberName']; ?>" class="form-input"></td>
                 </tr>
                 <tr>
+                    <td>RENEVAL DATE:</td>
+                    <td><input type="date" name="renevaldate" value="<?php echo $row['memberName']; ?>" class="form-input"></td>
+                </tr>
+                <tr>
                     <td>MEMBERSHIP PACKAGE:</td>
                     <td>
                         <select id="membershipPackage" name="membershipPackage" class="form-select">
