@@ -1123,7 +1123,7 @@ row-gap: 2rem;
 
   .pricing__container {
     padding-top: 3rem;
-    grid-template-columns: repeat(4, 320px);
+    grid-template-columns: repeat(3, 320px);
   }
 
   .pricing__card {
