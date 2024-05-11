@@ -1,6 +1,6 @@
 
 <?php
-    $con = new mysqli("localhost", "root", "", "horizon_gym");
+    $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
     if (mysqli_connect_error()) {
         die("Connection failed: " . mysqli_connect_error());
     } 
@@ -190,8 +190,8 @@
                     <td><input type="text" name="memberName" value="<?php echo $row['memberName']; ?>" class="form-input"></td>
                 </tr>
                 <tr>
-                    <td>RENEVAL DATE:</td>
-                    <td><input type="date" name="renevaldate" value="<?php echo $row['memberName']; ?>" class="form-input"></td>
+                    <td>RENEWAL DATE:</td>
+                    <td><input type="date" name="renewaldate" class="form-input"></td>
                 </tr>
                 <tr>
                     <td>MEMBERSHIP PACKAGE:</td>
@@ -227,7 +227,8 @@
                         echo $id_new=$_POST['memberId'];
                         echo $memberName=$_POST['memberName'];
                         echo $package=$_POST['membershipPackage'];
-                        $query="UPDATE `member_details` SET `memberId`='$id_new',`memberName`='$memberName',`membershipPackage`='$package' WHERE memberId='$id_new'";
+                        $renewaldate=$_POST['renewaldate'];
+                        $query="UPDATE `member_details` SET `memberId`='$id_new',`memberName`='$memberName',`membershipPackage`='$package',`joinDate`='$renewaldate' WHERE memberId='$id_new'";
                         $result=mysqli_query($con,$query);
                         if(!$result){
                             die("query failed".mysqli_error());

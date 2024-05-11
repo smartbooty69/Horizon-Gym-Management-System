@@ -211,7 +211,7 @@
 
                             <!--PHP CODE TO DISPLAY PACKAGE IN SELECT BUTTON-->
                             <?php
-                                        $con = new mysqli("localhost", "root", "", "horizon_gym");
+                                        $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
                                         if (mysqli_connect_error()) {
                                             die("Connection failed: " . mysqli_connect_error());
                                         } 
@@ -404,7 +404,7 @@
 
                                      <!--DATABASE CONNECTION AND QUERY FOR DISPLAYING MEMBER DATA-->
                                     <?php
-                                        $con = new mysqli("localhost", "root", "", "horizon_gym");
+                                        $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
                                         if (mysqli_connect_error()) {
                                             die("Connection failed: " . mysqli_connect_error());
                                         } 
@@ -482,7 +482,7 @@
         <div class="card-box">
             <div class="card package-card" id="package-card-id-1">
                 <?php
-                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                    $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
@@ -563,7 +563,7 @@
         <div class="card-box">
             <div class="card package-card" id="package-card-id-2">
                 <?php
-                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                    $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
@@ -641,7 +641,7 @@
         <div class="card-box">
             <div class="card package-card" id="package-card-id-3">
                 <?php
-                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                    $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
@@ -719,7 +719,7 @@
         <div class="card-box">
             <div class="card package-card" id="package-card-id-4">
                 <?php
-                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                    $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
                     if (mysqli_connect_error()) {
                         die("Connection failed: " . mysqli_connect_error());
                     } 
@@ -886,7 +886,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $con = new mysqli("localhost", "root", "", "horizon_gym");
+                                    $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
                                     if (mysqli_connect_error()) {
                                         die("Connection failed: " . mysqli_connect_error());
                                     } 
@@ -896,7 +896,7 @@
                                     $query = "SELECT m.memberId, m.memberImage, m.memberName, m.joinDate, p.package_name AS packageName, m.packageExpiry
                                               FROM member_details AS m
                                               INNER JOIN package_details AS p ON m.membershipPackage = p.package_name
-                                              WHERE DATEDIFF(m.packageExpiry, '$currentDate') <= 5";
+                                              WHERE DATEDIFF(m.packageExpiry, '$currentDate') BETWEEN -1 AND 5";
                                     $result = mysqli_query($con, $query);
                                     if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {

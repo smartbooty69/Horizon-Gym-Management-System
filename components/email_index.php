@@ -13,9 +13,9 @@ if (isset($_POST['message'])) {
 
     // Database connection parameters
     $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "horizon_gym";
+    $username = "u480014807_horizon_admin";
+    $password = "Adminpassword0";
+    $dbname = "u480014807_horizon_gym";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);

@@ -177,7 +177,7 @@
         <body>
             <?php
             if(isset($_GET['id'])){
-                $con = new mysqli("localhost", "root", "", "horizon_gym");
+                $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
                 if (mysqli_connect_error()) {
                     die("Connection failed: " . mysqli_connect_error());
                 } 
