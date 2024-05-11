@@ -896,7 +896,7 @@
                                     $query = "SELECT m.memberId, m.memberImage, m.memberName, m.joinDate, p.package_name AS packageName, m.packageExpiry
                                               FROM member_details AS m
                                               INNER JOIN package_details AS p ON m.membershipPackage = p.package_name
-                                              WHERE DATEDIFF(m.packageExpiry, '$currentDate') BETWEEN -1 AND 5";
+                                              WHERE DATEDIFF(m.packageExpiry, '$currentDate') < 0";
                                     $result = mysqli_query($con, $query);
                                     if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
@@ -911,7 +911,7 @@
                                     <td><?php echo $row['joinDate']; ?></td>
                                     <td><?php echo $row['packageName']; ?></td>
                                     <td><?php echo $row['packageExpiry']; ?></td>
-                                    <td><?php echo $daysLeft ?></td>
+                                    <td style="color:red;font-weight:500"><?php echo "EXPIRED"; ?></td>
                                 </tr>
                                 <?php
                                         }

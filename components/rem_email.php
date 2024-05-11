@@ -27,7 +27,7 @@ if (isset($_POST['message'])) {
     // SQL query to fetch members whose package is expiring within 5 days
     $currentDate = date('Y-m-d');
     $query = "SELECT memberName, memberEmail FROM member_details 
-              WHERE DATEDIFF(packageExpiry, '$currentDate') BETWEEN -1 AND 5";
+              WHERE DATEDIFF(packageExpiry, '$currentDate') < 0";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
@@ -57,7 +57,7 @@ if (isset($_POST['message'])) {
 
                 // Set recipient and email body
                 $mail->addAddress($memberEmail, $memberName);
-                $mail->Body = 'Dear ' . $memberName . ',<br><br>' . $messageContent . '<br><br>YOUR MEMBERSHIP IS ABOUT TO EXPIRE<br>Thank you,<br>Horizon Gym';
+                $mail->Body = 'Dear ' . $memberName . ',<br><br>' . $messageContent . '<br><br>YOUR MEMBERSHIP HAS BEEN EXPIRED<br>Thank you,<br>Horizon Gym';
                 $mail->Body = 'Dear ' . $memberName . ',<br><br>' . $messageContent . '<br><br>Thank you,<br>Horizon Gym';
 
 

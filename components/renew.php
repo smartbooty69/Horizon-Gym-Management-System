@@ -228,16 +228,27 @@
                         echo $memberName=$_POST['memberName'];
                         echo $package=$_POST['membershipPackage'];
                         $renewaldate=$_POST['renewaldate'];
-                        $query="UPDATE `member_details` SET `memberId`='$id_new',`memberName`='$memberName',`membershipPackage`='$package',`joinDate`='$renewaldate' WHERE memberId='$id_new'";
-                        $result=mysqli_query($con,$query);
-                        if(!$result){
-                            die("query failed".mysqli_error());
+
+                        if ($result && $result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            $packageDuration = $row['package_duration'];
+                            $joinDateTime = new DateTime($renewaldate);
+                            $expiryDate = clone $joinDateTime;
+                            $expiryDate->modify("+" . $packageDuration); // Add package duration to join date
+
+                            $packageExpiry = $expiryDate->format('Y-m-d');
+
+                            $query="UPDATE `member_details` SET `memberId`='$id_new',`memberName`='$memberName',`membershipPackage`='$membershipPackage',`joinDate`='$renewaldate',`packageExpiry`='$packageExpiry' WHERE memberId='$id_new'";
+                            $result=mysqli_query($con,$query);
+                            if(!$result){
+                                die("query failed".mysqli_error());
+                            }
+                            else{
+                                header("location:../components/dashboard.php");
+                                exit;
                         }
-                        else{
-                            header("location:../components/dashboard.php");
-                            exit;
+                        mysqli_close($con);
                     }
-                    mysqli_close($con);
                 }
             }
 ?> 
