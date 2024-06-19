@@ -226,8 +226,10 @@
                 if(isset($_POST['memberId'])){
                         echo $id_new=$_POST['memberId'];
                         echo $memberName=$_POST['memberName'];
-                        echo $package=$_POST['membershipPackage'];
+                        echo $membershipPackage=$_POST['membershipPackage'];
                         $renewaldate=$_POST['renewaldate'];
+                        $packageDurationQuery = "SELECT package_duration FROM package_details WHERE package_name = '$membershipPackage'";
+                        $result = $con->query($packageDurationQuery);
 
                         if ($result && $result->num_rows > 0) {
                             $row = $result->fetch_assoc();

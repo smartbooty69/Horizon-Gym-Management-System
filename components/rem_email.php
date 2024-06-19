@@ -27,7 +27,7 @@ if (isset($_POST['message'])) {
     // SQL query to fetch members whose package is expiring within 5 days
     $currentDate = date('Y-m-d');
     $query = "SELECT memberName, memberEmail FROM member_details 
-              WHERE DATEDIFF(packageExpiry, '$currentDate') < 0";
+              WHERE DATEDIFF(packageExpiry, '$currentDate') <= 0";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {

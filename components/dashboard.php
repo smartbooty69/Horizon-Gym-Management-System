@@ -289,105 +289,6 @@
                                     </div>
                                 </div>
                             </div>
-                        
-                            
-                            <!-- The Modal DISPAY -->
-                            <!-- <div id="full-member-detail" class="modal">
-                                
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <div class="modal-form">
-                                        <form id="displayMemberForm" enctype="multipart/form-data">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        Image
-                                                    </td>
-                                                    <td><img src="" id="displayMemberImage" alt="Member Image"></td>
-                                                </tr> 
-                                                <tr>
-                                                    <td>
-                                                        Member Name
-                                                    </td>
-                                                    <td><span id="displayMemberName"></span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Join Date
-                                                    </td>
-                                                    <td><span id="displayJoinDate"></span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Membership Package
-                                                    </td>
-                                                    <td><span id="displayMembershipPackage"></span></td>
-                                                </tr>  
-                                                <tr>
-                                                    <td>
-                                                        Phone Number
-                                                    </td>
-                                                    <td><span id="displayMemberPhone"></span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Email
-                                                    </td>
-                                                    <td><span id="displayMemberEmail"></span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Date of Birth
-                                                    </td>
-                                                    <td><span id="displayMemberAge"></span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Address
-                                                    </td>
-                                                    <td><span id="displayMemberAddress"></span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Gender
-                                                    </td>
-                                                    <td><span id="displayMemberGender"></span></td>
-                                                </tr> 
-                                            </table>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>    -->
-
-                           
-
-                                 <!--=================  POP RENEW MODAL  =======================-->
-                            <!-- <div id="renew-package" class="modal">
-                                
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <div class="modal-form">
-                                        <form action="renew.php?id_new="></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Membership Package</td>
-                                                    <td>
-                                                        <select id="membershipPackage" name="membershipPackage">
-                                                            <option>demo</option>
-                                                            <option>demo1</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                    <input  class="btn btn-outline" type="submit" name="update" value="update">
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>                         -->
                                        
 
                            <div class="box-body">
@@ -793,6 +694,319 @@
                 </div>
             </div>
 
+
+
+
+            <div class="card-box">
+            <div class="card package-card" id="package-card-id-5">
+                <?php
+                    $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
+                    if (mysqli_connect_error()) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    } 
+                    $query="SELECT * FROM `package_details` WHERE packageid=5";
+                    $result=mysqli_query($con,$query);
+                    if(!$result){
+                        die("query failed".mysqli_error());
+                    }else{
+                        $row=mysqli_fetch_assoc($result);
+                ?>
+                <div class="card-body">  
+                    <table class="package-data-display">
+                        <tr>
+                            <td><strong>Package Name:</strong></td>
+                            <td><?php echo $row['package_name']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price:</strong></td>
+                            <td><?php echo $row['package_price']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duration:</strong></td>
+                            <td><?php echo $row['package_duration']; ?></td>
+                        </tr>
+                    </table>
+                    <div class="card-btn-container">
+                    <button class="btn btn-outline all-card-edit-button" id="edit-package-btn-5">Edit</button>
+                    </div>
+                </div><?php
+                    }
+                    
+                ?>
+            </div> 
+        </div>
+
+                    <!-- The EDIT PACKAGE MODAL -->
+            <div id="edit-package-modal-5" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" id="close-package-edit">&times;</span>
+                    <div class="modal-form">
+                        <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
+                            <table>
+                                <tr>
+                                    <td>Package Name</td>
+                                    <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
+                                </tr>
+                                <tr>
+                                    <td>Duration</td>
+                                    <td><select id="packageduration" name="packageDuration">
+                                            <option>1 MONTH</option>
+                                            <option>3 MONTHS</option>
+                                            <option>6 MONTHS</option>
+                                            <option>12 MONTHS</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit5">Submit</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-box">
+            <div class="card package-card" id="package-card-id-6">
+                <?php
+                    $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
+                    if (mysqli_connect_error()) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    } 
+                    $query="SELECT * FROM `package_details` WHERE packageid=6";
+                    $result=mysqli_query($con,$query);
+                    if(!$result){
+                        die("query failed".mysqli_error());
+                    }else{
+                        $row=mysqli_fetch_assoc($result);
+                ?>
+                <div class="card-body">  
+                    <table class="package-data-display">
+                        <tr>
+                            <td><strong>Package Name:</strong></td>
+                            <td><?php echo $row['package_name']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price:</strong></td>
+                            <td><?php echo $row['package_price']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duration:</strong></td>
+                            <td><?php echo $row['package_duration']; ?></td>
+                        </tr>
+                    </table>
+                    <div class="card-btn-container">
+                    <button class="btn btn-outline all-card-edit-button" id="edit-package-btn-6">Edit</button>
+                    </div>
+                </div><?php
+                    }
+                    
+                ?>
+            </div> 
+        </div>
+
+                    <!-- The EDIT PACKAGE MODAL -->
+            <div id="edit-package-modal-6" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" id="close-package-edit">&times;</span>
+                    <div class="modal-form">
+                        <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
+                            <table>
+                                <tr>
+                                    <td>Package Name</td>
+                                    <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
+                                </tr>
+                                <tr>
+                                    <td>Duration</td>
+                                    <td><select id="packageduration" name="packageDuration">
+                                            <option>1 MONTH</option>
+                                            <option>3 MONTHS</option>
+                                            <option>6 MONTHS</option>
+                                            <option>12 MONTHS</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit6">Submit</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="card-box">
+            <div class="card package-card" id="package-card-id-7">
+                <?php
+                    $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
+                    if (mysqli_connect_error()) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    } 
+                    $query="SELECT * FROM `package_details` WHERE packageid=7";
+                    $result=mysqli_query($con,$query);
+                    if(!$result){
+                        die("query failed".mysqli_error());
+                    }else{
+                        $row=mysqli_fetch_assoc($result);
+                ?>
+                <div class="card-body">  
+                    <table class="package-data-display">
+                        <tr>
+                            <td><strong>Package Name:</strong></td>
+                            <td><?php echo $row['package_name']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price:</strong></td>
+                            <td><?php echo $row['package_price']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duration:</strong></td>
+                            <td><?php echo $row['package_duration']; ?></td>
+                        </tr>
+                    </table>
+                    <div class="card-btn-container">
+                    <button class="btn btn-outline all-card-edit-button" id="edit-package-btn-7">Edit</button>
+                    </div>
+                </div><?php
+                    }
+                    
+                ?>
+            </div> 
+        </div>
+
+                    <!-- The EDIT PACKAGE MODAL -->
+            <div id="edit-package-modal-7" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" id="close-package-edit">&times;</span>
+                    <div class="modal-form">
+                        <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
+                            <table>
+                                <tr>
+                                    <td>Package Name</td>
+                                    <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
+                                </tr>
+                                <tr>
+                                    <td>Duration</td>
+                                    <td><select id="packageduration" name="packageDuration">
+                                            <option>1 MONTH</option>
+                                            <option>3 MONTHS</option>
+                                            <option>6 MONTHS</option>
+                                            <option>12 MONTHS</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit7">Submit</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="card-box">
+            <div class="card package-card" id="package-card-id-8">
+                <?php
+                    $con = new mysqli("localhost","u480014807_horizon_admin","Adminpassword0","u480014807_horizon_gym");
+                    if (mysqli_connect_error()) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    } 
+                    $query="SELECT * FROM `package_details` WHERE packageid=8";
+                    $result=mysqli_query($con,$query);
+                    if(!$result){
+                        die("query failed".mysqli_error());
+                    }else{
+                        $row=mysqli_fetch_assoc($result);
+                ?>
+                <div class="card-body">  
+                    <table class="package-data-display">
+                        <tr>
+                            <td><strong>Package Name:</strong></td>
+                            <td><?php echo $row['package_name']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price:</strong></td>
+                            <td><?php echo $row['package_price']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duration:</strong></td>
+                            <td><?php echo $row['package_duration']; ?></td>
+                        </tr>
+                    </table>
+                    <div class="card-btn-container">
+                    <button class="btn btn-outline all-card-edit-button" id="edit-package-btn-8">Edit</button>
+                    </div>
+                </div><?php
+                    }
+                    
+                ?>
+            </div> 
+        </div>
+
+                    <!-- The EDIT PACKAGE MODAL -->
+            <div id="edit-package-modal-8" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" id="close-package-edit">&times;</span>
+                    <div class="modal-form">
+                        <form id="editPackeageForm" enctype="multipart/form-data"  method="POST" action="package_update.php">
+                            <table>
+                                <tr>
+                                    <td>Package Name</td>
+                                    <td><input type="text" id="packageName" name="packageName" placeholder="Package Name"></td>
+                                </tr>
+                                <tr>
+                                    <td>Duration</td>
+                                    <td><select id="packageduration" name="packageDuration">
+                                            <option>1 MONTH</option>
+                                            <option>3 MONTHS</option>
+                                            <option>6 MONTHS</option>
+                                            <option>12 MONTHS</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td><input type="text" id="packagePrice" name="packagePrice" placeholder="Price"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button class="btn btn-outline" type="submit" name="submit8">Submit</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
          
                 </div>
             </div>
@@ -896,7 +1110,7 @@
                                     $query = "SELECT m.memberId, m.memberImage, m.memberName, m.joinDate, p.package_name AS packageName, m.packageExpiry
                                               FROM member_details AS m
                                               INNER JOIN package_details AS p ON m.membershipPackage = p.package_name
-                                              WHERE DATEDIFF(m.packageExpiry, '$currentDate') < 0";
+                                              WHERE DATEDIFF(m.packageExpiry, '$currentDate') <= 0";
                                     $result = mysqli_query($con, $query);
                                     if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
